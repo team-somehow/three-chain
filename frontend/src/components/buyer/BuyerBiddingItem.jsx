@@ -24,6 +24,7 @@ const BuyerBiddingItem = (props) => {
 								price: props.price,
 								name: auth.user.name,
 								amount: Number(props.price) * Number(props.quantity),
+								walletAddress: auth.user.address,
 							});
 						} else {
 							data[i].bids = [
@@ -31,6 +32,7 @@ const BuyerBiddingItem = (props) => {
 									price: props.price,
 									name: auth.user.name,
 									amount: Number(props.price) * Number(props.quantity),
+									walletAddress: auth.user.address,
 								},
 							];
 						}

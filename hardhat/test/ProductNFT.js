@@ -6,6 +6,8 @@ describe("ProductNFT", function () {
   let owner;
   let addr1;
 
+  const batchUid = 1;
+
   before(async function () {
     // use ethers to get our contract
     const ProductNFT = await ethers.getContractFactory("ProductNFT");
@@ -39,5 +41,31 @@ describe("ProductNFT", function () {
     expect(batchData.verification).to.be.false;
     expect(batchData.owner).to.equal(owner.address);
     expect(batchData.currentPrice).to.equal(0);
+  });
+
+  it("should set verification to true", async function () {
+    const quantity = 10;
+    const name = "Test Batch";
+
+    await contract.connect(owner).batchMint(quantity, name, batchUid);
+    await contract.connect(owner).regulatorApproval(batchUid);
+
+    const batchData = await contract.getBatchData(batchUid);
+    expect(batchData.verification).to.equal(true);
+  });
+
+  it("should start the escrow process", async function () {
+    const escrowAmount = ethers.utils.parseEther("1");
+
+    await contract.connect(owner).escrowStart(batchUid, {
+      value: escrowAmount,
+    });
+
+    const batchData = await contract.getBatchData(batchUid);
+    expect(batchData.currentPrice).to.equal(escrowAmount);
+    // expect(await contract.escrowProcess(batchUid)).to.equal(true);
+    // expect(await contract.escrowRecevier(batchUid)).to.equal(
+    //   await owner.getAddress()
+    // );
   });
 });

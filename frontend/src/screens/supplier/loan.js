@@ -6,8 +6,15 @@ import { useAuth } from "@arcana/auth-react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { useParams } from "react-router-dom";
+import { providers, Contract, ethers } from "ethers";
+import { arcanaProvider } from "../..";
+import { LoanContractAddress } from "../../constants/constants";
+import LoanAbi from "../../artifacts/contracts/Loan.sol/Loan.json";
 
 function Loan() {
+	const provider = new providers.Web3Provider(arcanaProvider.provider);
+	const signer = provider.getSigner();
+	const contract = new Contract(LoanContractAddress, LoanAbi.abi, signer);
 	const durationOptions = [6, 12, 18];
 	const [interest, setInterest] = useState(10);
 	const [selectedDuration, setSelectedDuration] = useState(durationOptions[0]);
@@ -26,6 +33,12 @@ function Loan() {
 			manufacturerId: id,
 			tenure: selectedDuration,
 		});
+		await arcanaProvider.connect();
+		await contract.requestLoan(
+			auth.user.address,
+			ethers.utils.parseEther(totalAmount.toString()),
+			selectedDuration
+		);
 		console.log("Done");
 	};
 	useEffect(() => {

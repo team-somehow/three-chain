@@ -42,6 +42,7 @@ function OnboardingMan() {
 		await addDoc(collection(db, "Manufacturer"), {
 			name: auth?.user?.name,
 			demandUnits: productRequirement,
+			uid: auth?.user?.address,
 		});
 		console.log("Done");
 	};

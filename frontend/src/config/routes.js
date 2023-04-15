@@ -36,12 +36,12 @@ import ValidateToken from "../screens/ValidateToken";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
 const router = createBrowserRouter([
+    // {
+    //     path: "/",
+    //     element: <h1>Home</h1>,
+    // },
     {
         path: "/",
-        element: <h1>Home</h1>,
-    },
-    {
-        path: "/login",
         element: <Login />,
     },
     {

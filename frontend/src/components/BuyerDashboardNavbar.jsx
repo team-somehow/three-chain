@@ -12,9 +12,8 @@ import ChatIcon from "@mui/icons-material/Chat";
 import AddIcon from "@mui/icons-material/Add";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Divider, Typography } from "@mui/material";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
-const DashboardNavbar = (props) => {
+const BuyerDashboardNavbar = (props) => {
     const navigate = useNavigate();
     const currentRoute = useLocation().pathname;
     return (
@@ -70,40 +69,22 @@ const DashboardNavbar = (props) => {
                     </div>
 
                     <NavLink
-                        text={"Overview"}
-                        icon={<RemoveRedEyeIcon />}
-                        onClickNavigateTo="/manufacturer/dash/"
-                        isActive={currentRoute === "/manufacturer/dash/"}
-                    />
-                    <NavLink
-                        text={"Approve Bid"}
+                        text={"Home"}
                         icon={<HandshakeIcon />}
-                        onClickNavigateTo="/manufacturer/dash/bidApproval"
-                        isActive={
-                            currentRoute === "/manufacturer/dash/bidApproval"
-                        }
+                        onClickNavigateTo="/buyer"
+                        isActive={currentRoute === "/buyer"}
                     />
                     <NavLink
-                        text={"Approve Loans"}
+                        text={"Place Bid"}
                         icon={<ApartmentIcon />}
-                        onClickNavigateTo="/manufacturer/dash/approveLoan"
-                        isActive={
-                            currentRoute === "/manufacturer/dash/approveLoan"
-                        }
+                        onClickNavigateTo="/buyer/placeBid"
+                        isActive={currentRoute === "/buyer/placeBid"}
                     />
                     <NavLink
-                        text={"My Batches"}
+                        text={"Buyer Tracks"}
                         icon={<ChatIcon />}
-                        onClickNavigateTo="/manufacturer/dash/batches"
-                        isActive={currentRoute === "/manufacturer/dash/batches"}
-                    />
-                    <NavLink
-                        text={"Create Batch"}
-                        icon={<AddIcon />}
-                        onClickNavigateTo="/manufacturer/dash/createBatch"
-                        isActive={
-                            currentRoute === "/manufacturer/dash/createBatch"
-                        }
+                        onClickNavigateTo="/buyer/buyerTrack"
+                        isActive={currentRoute === "/buyer/buyerTrack"}
                     />
                 </List>
                 <Box
@@ -117,4 +98,4 @@ const DashboardNavbar = (props) => {
     );
 };
 
-export default DashboardNavbar;
+export default BuyerDashboardNavbar;

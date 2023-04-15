@@ -5,6 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import BuyerTrackItem from "../../components/buyer/BuyerTrackItem";
 import { db } from "../../config/firebase";
+import BuyerDashboardNavbar from "../../components/BuyerDashboardNavbar";
 
 const BuyerTrack = () => {
     const [data, setData] = useState([]);
@@ -33,11 +34,14 @@ const BuyerTrack = () => {
     }, [auth]);
 
     return (
-        <Box>
-            <Typography>Track your orders</Typography>
-            {data.map((item) => {
-                return <BuyerTrackItem {...item} />;
-            })}
+        <Box display={"flex"}>
+            <BuyerDashboardNavbar />
+            <Box m={2}>
+                <Typography>Track your orders</Typography>
+                {data.map((item) => {
+                    return <BuyerTrackItem {...item} />;
+                })}
+            </Box>
         </Box>
     );
 };

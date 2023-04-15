@@ -13,6 +13,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Divider, Typography } from "@mui/material";
 
 const LogisticsNavbar = (props) => {
     const navigate = useNavigate();
@@ -35,10 +36,22 @@ const LogisticsNavbar = (props) => {
             classes={{ paper: "awesome-bg-0" }}
         >
             <Box role="presentation" p={2}>
+                <Box
+                    display={"flex"}
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    mb={2}
+                >
+                    <img src="/logo192.png" width={"60px"} />
+                    <Typography variant="h5" ml={2}>
+                        3 Chain
+                    </Typography>
+                </Box>
+                <Divider />
                 <List>
                     <div
                         style={{
-                            paddingLeft: "18px",
+                            // paddingLeft: "18px",
                             marginTop: "-12px",
                             marginBottom: "28px",
                             cursor: "pointer",
@@ -48,7 +61,9 @@ const LogisticsNavbar = (props) => {
                     >
                         <ListItem onClick={() => navigate("/logistics")}>
                             <ListItemText>
-                                <h2>Dashboard</h2>
+                                <h1 className="text-[#1f4e5f] font-black text-xl">
+                                    Logistics Dashboard
+                                </h1>
                             </ListItemText>
                         </ListItem>
                     </div>

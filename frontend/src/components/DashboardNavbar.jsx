@@ -12,6 +12,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import AddIcon from "@mui/icons-material/Add";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Divider, Typography } from "@mui/material";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const DashboardNavbar = (props) => {
     const navigate = useNavigate();
@@ -68,6 +69,12 @@ const DashboardNavbar = (props) => {
                         </ListItem>
                     </div>
 
+                    <NavLink
+                        text={"Overview"}
+                        icon={<RemoveRedEyeIcon />}
+                        onClickNavigateTo="/manufacturer/dash/"
+                        isActive={currentRoute === "/manufacturer/dash/"}
+                    />
                     <NavLink
                         text={"Approve Bid"}
                         icon={<HandshakeIcon />}

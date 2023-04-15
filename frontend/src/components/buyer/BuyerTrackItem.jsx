@@ -64,8 +64,25 @@ const BuyerTrackItem = (props) => {
 
         navigate(0);
     };
-    console.log(props.itemInTransit);
+    console.log(props.itemReached);
 
+    if (props.itemReached && props.itemInTransit) {
+        return (
+            <Box component={Paper}>
+                <Typography>{props.productName}</Typography>
+                <Typography>Drop waiting for confirmation</Typography>
+            </Box>
+        );
+    }
+
+    if (props.itemReached) {
+        return (
+            <Box component={Paper}>
+                <Typography>{props.productName}</Typography>
+                <Typography>Item successfully reached</Typography>
+            </Box>
+        );
+    }
     if (props.itemInTransit) {
         return (
             <Box
@@ -85,14 +102,6 @@ const BuyerTrackItem = (props) => {
         );
     }
 
-    if (props?.itemReached) {
-        return (
-            <Box component={Paper}>
-                <Typography>{props.productName}</Typography>
-                <Typography>Item successfully reached</Typography>
-            </Box>
-        );
-    }
     if (!props.buyer && !props.logistic) {
         return <Box></Box>;
     }

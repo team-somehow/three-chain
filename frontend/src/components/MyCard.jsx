@@ -31,6 +31,7 @@ const ExpandMore = styled((props) => {
 }));
 
 function MyCard(props) {
+	console.log(props);
 	const provider = new providers.Web3Provider(arcanaProvider.provider);
 	const signer = provider.getSigner();
 	const contract = new Contract(LoanContractAddress, LoanAbi.abi, signer);

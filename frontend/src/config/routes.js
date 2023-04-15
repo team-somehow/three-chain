@@ -21,6 +21,7 @@ import HomeLog from "../screens/logistics/HomeLog";
 import DetailsLog from "../screens/logistics/DetailsLog";
 import BuyerHome from "../screens/buyer/BuyerHome";
 import BuyerBid from "../screens/buyer/BuyerBid";
+import BidApproval from "../screens/manufacturer/BidApproval";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -107,6 +108,10 @@ const router = createBrowserRouter([
 					{
 						path: "batches",
 						element: <MyBatches />,
+					},
+					{
+						path: "bidApproval",
+						element: <BidApproval />,
 					},
 				],
 			},

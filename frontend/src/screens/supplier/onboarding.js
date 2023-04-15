@@ -19,7 +19,8 @@ function Onboarding() {
   const [selectedSellingProduct, setSelectedSellingProduct] = useState(
     sellingProducts[0]
   );
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
+  const [sellingUnits, setSetSellingUnits] = useState(0);
   const imageUploadRef = useRef();
   useEffect(() => {
     console.log(image);
@@ -29,10 +30,12 @@ function Onboarding() {
     setLoading(true);
     const data = {
       name: "Rajesh",
+      role: "supplier",
       phone: "1234567890",
       aadhar: "123456789012",
       address: "123, ABC Street, XYZ City, 123456",
       crop: selectedSellingProduct,
+      sellingUnits: sellingUnits,
     };
     await addDoc(collection(db, "suppliers"), data);
     setLoading(false);
@@ -65,7 +68,10 @@ function Onboarding() {
           inputValue={selectedSellingProduct}
           options={sellingProducts}
         />
-        <WeightInput />
+        <WeightInput
+          inputValue={sellingUnits}
+          setInputValue={setSetSellingUnits}
+        />
         <Box>
           <Button
             variant="contained"

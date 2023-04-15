@@ -1,17 +1,15 @@
+import React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
 import NavLink from './NavLink';
 
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import ChatIcon from '@mui/icons-material/Chat';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AddIcon from '@mui/icons-material/Add';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const DashboardNavbar = (props) => {
@@ -46,7 +44,7 @@ const DashboardNavbar = (props) => {
               alignItems: 'center',
             }}
           >
-            <ListItem onClick={() => navigate('/manufacturer/dash/home')}>
+            <ListItem onClick={() => navigate('/manufacturer/dash')}>
               <ListItemText>
                 <h2>Dashboard</h2>
               </ListItemText>
@@ -70,6 +68,12 @@ const DashboardNavbar = (props) => {
             icon={<ChatIcon />}
             onClickNavigateTo="/manufacturer/dash/batches"
             isActive={currentRoute === '/manufacturer/dash/batches'}
+          />
+          <NavLink
+            text={'Create Batch'}
+            icon={<AddIcon />}
+            onClickNavigateTo="/manufacturer/dash/creatBatch"
+            isActive={currentRoute === '/manufacturer/dash/creatBatch'}
           />
         </List>
         <Box

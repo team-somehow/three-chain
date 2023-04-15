@@ -4,8 +4,13 @@ const { ethers } = require("hardhat");
 describe("ProductNFT", function () {
   let contract;
   let owner;
-  let addr1;
+  let bidder1;
+  let bidder2;
+  let seller;
+  let regulator;
 
+  const quantity = 10;
+  const name = "Test Batch";
   const batchUid = 1;
 
   before(async function () {
@@ -16,56 +21,63 @@ describe("ProductNFT", function () {
     await contract.deployed();
 
     // get addresses of users
-    const [_owner, _addr1] = await ethers.getSigners();
+    const [_owner, _bidder1, _bidder2, _seller, _regulator] =
+      await ethers.getSigners();
+
     owner = _owner;
-    addr1 = _addr1;
+    bidder1 = _bidder1;
+    bidder2 = _bidder2;
+    seller = _seller;
+    regulator = _regulator;
   });
 
   it("should mint a batch of NFTs", async () => {
-    const quantity = 10;
-    const name = "Test Batch";
-    const batchUid = 1;
-
     // Ensure that batch minting works correctly
-    await contract.batchMint(quantity, name, batchUid, {
+    await contract.connect(seller).batchMint(quantity, name, batchUid, {
       value: ethers.utils.parseEther("1"),
     });
-    expect(await contract.balanceOf(owner.address)).to.equal(quantity);
+    expect(await contract.balanceOf(seller.address)).to.equal(quantity);
 
     // Ensure that batch data is stored correctly
     const batchData = await contract.getBatchData(batchUid);
+
     expect(batchData.name).to.equal(name);
     expect(batchData.quantity).to.equal(quantity);
     expect(batchData.startTokenId).to.equal(0);
     expect(batchData.endTokenId).to.equal(quantity);
     expect(batchData.verification).to.be.false;
-    expect(batchData.owner).to.equal(owner.address);
+    expect(batchData.owner).to.equal(seller.address);
     expect(batchData.currentPrice).to.equal(0);
   });
 
   it("should set verification to true", async function () {
-    const quantity = 10;
-    const name = "Test Batch";
-
-    await contract.connect(owner).batchMint(quantity, name, batchUid);
-    await contract.connect(owner).regulatorApproval(batchUid);
+    await contract.connect(regulator).regulatorApproval(batchUid);
 
     const batchData = await contract.getBatchData(batchUid);
     expect(batchData.verification).to.equal(true);
   });
 
-  it("should start the escrow process", async function () {
+  it("bidder 1 bids for batch", async function () {
     const escrowAmount = ethers.utils.parseEther("1");
 
-    await contract.connect(owner).escrowStart(batchUid, {
+    await contract.connect(bidder1).escrowBid(batchUid, {
       value: escrowAmount,
     });
+  });
 
-    const batchData = await contract.getBatchData(batchUid);
-    expect(batchData.currentPrice).to.equal(escrowAmount);
-    // expect(await contract.escrowProcess(batchUid)).to.equal(true);
-    // expect(await contract.escrowRecevier(batchUid)).to.equal(
-    //   await owner.getAddress()
-    // );
+  it("bidder 2 bids for batch", async function () {
+    const escrowAmount = ethers.utils.parseEther("2");
+
+    await contract.connect(bidder2).escrowBid(batchUid, {
+      value: escrowAmount,
+    });
+  });
+
+  it("seller accepts bidder 2's bid", async function () {
+    await contract.connect(seller).escrowBatch(batchUid, bidder2.address);
+  });
+
+  it("end escrow", async function () {
+    await contract.connect(seller).escrowEnd(batchUid);
   });
 });

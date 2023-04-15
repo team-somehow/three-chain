@@ -1,28 +1,40 @@
-import React from 'react';
-import Center from '../../components/utils/Center';
-import { Button } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import Dropdown from '../../components/Dropdown';
-import WeightInput from '../../components/WeightInput';
-import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import Center from "../../components/utils/Center";
+import { Button } from "@mui/material";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import Dropdown from "../../components/Dropdown";
+import WeightInput from "../../components/WeightInput";
+import Box from "@mui/material/Box";
+import { Link } from "react-router-dom";
 
 const grains = [
-  { label: 'Sugar', id: 1 },
-  { label: 'Wheat', id: 2 },
-  { label: 'Rice', id: 3 },
-  { label: 'Corn', id: 4 },
-  { label: 'Oats', id: 5 },
-  { label: 'Barley', id: 6 },
-  { label: 'Rye', id: 7 },
-  { label: 'Millet', id: 8 },
+  { label: "Sugar", id: 1 },
+  { label: "Wheat", id: 2 },
+  { label: "Rice", id: 3 },
+  { label: "Corn", id: 4 },
+  { label: "Oats", id: 5 },
+  { label: "Barley", id: 6 },
+  { label: "Rye", id: 7 },
+  { label: "Millet", id: 8 },
 ];
 
 function OnboardingMan() {
+  const selectProductOptions = [
+    "Wheat",
+    "Sugarcane",
+    "Rice",
+    "Cotton",
+    "Maize",
+    "Soybean",
+  ];
+  const [selectedProduct, setSelectedProduct] = useState(
+    selectProductOptions[0]
+  );
+  const [productRequirement, setProductRequirement] = useState(0);
   return (
     <Box m={2}>
-      <h1 style={{ textAlign: 'center' }}>Supplier Onboarding</h1>
-      <form style={{ margin: '20vh auto' }}>
+      <h1 style={{ textAlign: "center" }}>Supplier Onboarding</h1>
+      <form style={{ margin: "20vh auto" }}>
         <Button
           variant="contained"
           size="large"
@@ -32,15 +44,22 @@ function OnboardingMan() {
           Upload Aadhar photo
         </Button>
         <Dropdown
-          options={['Wheat', 'Sugarcane', 'Rice', 'Cotton', 'Maize', 'Soybean']}
+          label={"Select the product"}
+          inputValue={selectedProduct}
+          setInputValue={setSelectedProduct}
+          options={selectProductOptions}
         />
-        <WeightInput placeholder="Enter the Units Expected" />
+        <WeightInput
+          placeholder="Enter the Units Expected"
+          inputValue={productRequirement}
+          setInputValue={setProductRequirement}
+        />
         <Box>
-          <Link to='/manufacturer/dash/home'>
+          <Link to="/manufacturer/dash/home">
             <Button
               variant="contained"
               fullWidth
-              onClick={() => console.log('Submitted Form')}
+              onClick={() => console.log("Submitted Form")}
             >
               Submit
             </Button>

@@ -13,24 +13,25 @@ contract ProductNFT is ERC721A{
         bool verification;
         address owner;
         uint256 currentPrice;
-
     }
+
     mapping(uint256=>Batch) batchData;
     mapping(uint256=>bool) escrowProcess;
     mapping(uint256=>address) escrowRecevier;
     mapping(uint256 =>address) escrowSender;
     
-    function batchMint(uint256 quantity,string memory name,uint256 batchName) public payable {
+    function batchMint(uint256 quantity,string memory name,uint256 batchUid) public payable {
         uint256 start=_nextTokenId();
-        batchData[batchName].name=name;
-        batchData[batchName].quantity=quantity;
-        batchData[batchName].startTokenId=start;
-        batchData[batchName].endTokenId=start+quantity;
-        batchData[batchName].verification=false;
-        batchData[batchName].owner=msg.sender;
-        batchData[batchName].currentPrice=0;
+        batchData[batchUid].name=name;
+        batchData[batchUid].quantity=quantity;
+        batchData[batchUid].startTokenId=start;
+        batchData[batchUid].endTokenId=start+quantity;
+        batchData[batchUid].verification=false;
+        batchData[batchUid].owner=msg.sender;
+        batchData[batchUid].currentPrice=0;
         _mint(msg.sender,quantity);
     }
+    
     function getBatchData(uint256 batchId) public view returns(Batch memory){
         return batchData[batchId];
     }

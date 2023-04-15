@@ -3,11 +3,11 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const options = ["Wheat", "Sugarcane", "Rice", "Cotton", "Maize", "Soybean"];
-export default function Dropdown({
-    options = options,
-    label,
+export default function MultiValueDropdown({
+    label = "",
     inputValue,
     setInputValue,
+    options = options,
 }) {
     const [value, setValue] = React.useState(options[0]);
     // const [inputValue, setInputValue] = React.useState("");
@@ -16,20 +16,20 @@ export default function Dropdown({
         <div>
             <br />
             <Autocomplete
-                value={value}
-                onChange={(event, newValue) => {
-                    setValue(newValue);
-                }}
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                    setInputValue(newInputValue);
-                }}
-                id="controllable-states-demo"
+                multiple
+                id="tags-outlined"
                 options={options}
-                sx={{ width: "100%" }}
+                defaultValue={[options[0]]}
+                filterSelectedOptions
                 renderInput={(params) => (
-                    <TextField {...params} label={label} />
+                    <TextField
+                        {...params}
+                        label="filterSelectedOptions"
+                        placeholder={label}
+                    />
                 )}
+                value={inputValue}
+                onChange={(e, value) => setInputValue(value)}
             />
         </div>
     );

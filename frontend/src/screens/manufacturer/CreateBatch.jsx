@@ -19,6 +19,8 @@ import { providers, Contract, ethers } from "ethers";
 import { ProductNFTContractAddress } from "../../constants/constants";
 import { arcanaProvider } from "../..";
 import { useNavigate } from "react-router-dom";
+import CustomCard from "../../components/CustomCard";
+import CustomButton from "../../components/CustomButton";
 
 function CreateBatch() {
     const provider = new providers.Web3Provider(arcanaProvider.provider);
@@ -91,13 +93,27 @@ function CreateBatch() {
     }
 
     return (
-        <div style={{ height: "100%", width: "100%", paddingLeft: 20 }}>
-            <Typography variant="h4" style={{ margin: "1rem 0" }}>
+        <div
+            style={{
+                height: "100%",
+                width: "100%",
+                textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                alignSelf: "center",
+                flexDirection: "column",
+            }}
+        >
+            <Typography
+                variant="h4"
+                style={{ margin: "2rem 0", color: "white" }}
+                fontWeight="600"
+            >
                 Create Batch
             </Typography>
-            <Card
-                sx={{
-                    width: "90%",
+            <CustomCard
+                styles={{
+                    width: "80%",
                     height: "100%",
                     marginTop: "3rem",
                     padding: "1rem",
@@ -141,10 +157,16 @@ function CreateBatch() {
                     value={batch.warehouse}
                     onChange={handleChange}
                 />
-                <Button variant="contained" onClick={handleSubmit}>
+                <CustomButton
+                    text={"Submit"}
+                    onPress={() => {
+                        handleSubmit();
+                    }}
+                    styles={{ width: "100%", margin: "0.5rem auto" }}
+                >
                     Create Batch
-                </Button>
-            </Card>
+                </CustomButton>
+            </CustomCard>
         </div>
     );
 }

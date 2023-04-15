@@ -20,6 +20,7 @@ import ProductNFT from "../artifacts/contracts/ProductNFT.sol/ProductNFT.json";
 import { providers, Contract, ethers } from "ethers";
 import { arcanaProvider } from "..";
 import { ProductNFTContractAddress } from "../constants/constants";
+import CustomCard from "./CustomCard";
 
 function MyCard(props) {
     const navigate = useNavigate();
@@ -89,7 +90,7 @@ function MyCard(props) {
         navigate(0);
     };
     return (
-        <Card sx={{ width: 600, marginBottom: 2 }}>
+        <CustomCard styles={{ width: 600, margin: '1rem auto' }}>
             <CardHeader
                 title={props.productName}
                 subheader={`Batch ID: ${props.batchId}`}
@@ -131,7 +132,7 @@ function MyCard(props) {
                     Reject Batch
                 </Button>
             </CardActions>
-        </Card>
+        </CustomCard>
     );
 }
 

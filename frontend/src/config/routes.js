@@ -24,7 +24,11 @@ import BuyerBid from "../screens/buyer/BuyerBid";
 import BidApproval from "../screens/manufacturer/BidApproval";
 import BuyerTrack from "../screens/buyer/BuyerTrack";
 import Home from "../screens/supplier/Home";
+import Login from "../screens/Login/Login";
 import CustomAppBar from "../components/AppBar";
+import ManufacturerLogin from "../screens/manufacturer/ManufacturerLogin";
+import LogisticsLogin from "../screens/logistics/LogisticsLogin";
+import RegulatorLogin from "../screens/RegulatorLogin";
 import Chat from "../screens/Chat";
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -36,7 +40,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <h1>Login </h1>,
+        element: <Login />,
     },
     {
         path: "/supplier",
@@ -82,6 +86,10 @@ const router = createBrowserRouter([
     {
         path: "manufacturer",
         children: [
+            {
+                path: "login",
+                element: <ManufacturerLogin />,
+            },
             {
                 path: "onboarding",
                 element: <OnboardingMan />,
@@ -143,6 +151,10 @@ const router = createBrowserRouter([
                 element: <BuyerTrack />,
             },
         ],
+    },
+    {
+        path: "logistics/login",
+        element: <LogisticsLogin />,
     },
     {
         path: "/logistics",
@@ -250,7 +262,16 @@ const router = createBrowserRouter([
     },
     {
         path: "/regulator",
-        element: <Regulator />,
+        children: [
+            {
+                path: "",
+                element: <Regulator />,
+            },
+            {
+                path: "login",
+                element: <RegulatorLogin />,
+            },
+        ],
     },
     {
         path: "/buyer",

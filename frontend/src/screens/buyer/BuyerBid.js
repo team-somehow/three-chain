@@ -10,6 +10,8 @@ const BuyerBid = () => {
 
     const [data, setData] = useState([]);
     useEffect(() => {
+        if (!auth.user) return;
+
         const getData = async () => {
             let tData = [];
             const snapshot = await getDocs(collection(db, "Manufacturer"));
@@ -17,20 +19,26 @@ const BuyerBid = () => {
                 const t = doc.data();
                 for (let i = 0; i < t.products.length; i++) {
                     if (t.products[i].regulatorVerification) {
-                        let obj = t.products[i].bids.find(
+                        console.log(t.products[i]?.bids);
+                        console.log(t.products[i]);
+
+                        let obj = t.products[i]?.bids?.find(
                             (o) => o.walletAddress === auth.user.address
                         );
 
-                        if (obj) {
+                        if (!obj) {
                             tData.push(t.products[i]);
                         }
                     }
                 }
             });
+
+            console.log("tData", tData);
+
             setData(tData);
         };
         getData();
-    }, []);
+    }, [auth]);
 
     return (
         <Box>
@@ -38,7 +46,9 @@ const BuyerBid = () => {
                 Bid for Items
             </Typography>
             {data.map((item) => {
-                return <BuyerBiddingItem {...item} />;
+                return (
+                    <BuyerBiddingItem key={JSON.stringify(item)} {...item} />
+                );
             })}
         </Box>
     );

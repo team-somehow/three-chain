@@ -5,8 +5,9 @@ import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
 import Center from "./components/utils/Center";
 // import AuthChecker from "./components/auth/AuthChecker";
 import router from "./config/routes";
-import { SnackbarProvider } from "notistack";
+// import { SnackbarProvider } from "notistack";
 import StyleThemeProvider from "./theme/ThemeProvider";
+import React from "react";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -31,9 +32,9 @@ function App() {
 
   return (
     <StyleThemeProvider>
-      <SnackbarProvider>
-        <RouterProvider router={router} />
-      </SnackbarProvider>
+      {/* <SnackbarProvider> */}
+      <RouterProvider router={router} />
+      {/* </SnackbarProvider> */}
     </StyleThemeProvider>
   );
 }

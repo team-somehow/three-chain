@@ -37,6 +37,7 @@ const suppliers = [
 function ApproveLoans() {
     const [data, setData] = useState([]);
     const auth = useAuth();
+
     useEffect(() => {
         const getData = async () => {
             const q = query(
@@ -62,7 +63,7 @@ function ApproveLoans() {
                 variant="h4"
                 component="h4"
                 style={{ margin: "1rem 0" }}
-                fontWeight='600'
+                fontWeight="600"
             >
                 Approve Loans
             </Typography>

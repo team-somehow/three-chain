@@ -16,6 +16,9 @@ import MyBatches from "../screens/manufacturer/MyBatches";
 import CreateBatch from "../screens/manufacturer/CreateBatch";
 import Regulator from "../screens/Regulator";
 import RepayLoan from "../screens/supplier/RepayLoan";
+import LogisticsNavbar from "../components/LogisticsNav";
+import HomeLog from "../screens/logistics/HomeLog";
+import DetailsLog from "../screens/logistics/DetailsLog";
 import BuyerHome from "../screens/buyer/BuyerHome";
 import BuyerBid from "../screens/buyer/BuyerBid";
 
@@ -106,19 +109,6 @@ const router = createBrowserRouter([
 						element: <MyBatches />,
 					},
 				],
-			},
-		],
-	},
-	{
-		path: "/buyer",
-		children: [
-			{
-				path: "",
-				element: <BuyerHome />,
-			},
-			{
-				path: "placeBid",
-				element: <BuyerBid />,
 			},
 		],
 	},

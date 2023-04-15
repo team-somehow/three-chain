@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: url("./../public/main-laptop-bg.svg") no-repeat center
+    center/cover !important;
+  color: black !important;
+  overflow: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 code {

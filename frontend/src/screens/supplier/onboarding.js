@@ -5,7 +5,9 @@ import Dropdown from "../../components/Dropdown";
 import WeightInput from "../../components/WeightInput";
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../../config/firebase";
-
+import CardBg from "../../assets/card-bg.svg";
+import SuperButton from "../../components/SuperButton";
+import CustomButton from "../../components/CustomButton";
 function Onboarding() {
   const sellingProducts = [
     "Wheat",
@@ -42,18 +44,39 @@ function Onboarding() {
   };
 
   return (
-    <Box m={2}>
-      <Typography variant="h4" mb={10}>
-        Onboarding
-      </Typography>
-      <form>
-        <input
-          onChange={(e) => setImage(e.target.files)}
-          ref={imageUploadRef}
-          type="file"
-          style={{ display: "none" }}
-        />
-        <Button
+    <Box
+      width={"100%"}
+      height={"100vh"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+    >
+      <Box
+        sx={{
+          background: `url('${CardBg}') no-repeat center center !important`,
+          backdropFilter: "blur(6px)",
+          borderRadius: "15px",
+          padding: "1rem",
+          margin: "1rem",
+          overflow: "hidden",
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Typography variant="h4" mb={10}>
+          Onboarding
+        </Typography>
+        <Box component={"form"} display={"flex"} flexDirection={"column"}>
+          <input
+            onChange={(e) => setImage(e.target.files)}
+            ref={imageUploadRef}
+            type="file"
+            style={{ display: "none" }}
+          />
+          {/* <Button
           variant="contained"
           size="large"
           startIcon={<CloudUploadIcon />}
@@ -61,29 +84,40 @@ function Onboarding() {
           fullWidth
         >
           Upload Aadhar photo
-        </Button>
-        <Dropdown
-          label={"What do you sell?"}
-          setInputValue={setSelectedSellingProduct}
-          inputValue={selectedSellingProduct}
-          options={sellingProducts}
-        />
-        <WeightInput
-          inputValue={sellingUnits}
-          setInputValue={setSetSellingUnits}
-        />
-        <Box>
-          <Button
-            variant="contained"
-            fullWidth
-            onClick={() => {
+        </Button> */}
+          <SuperButton
+            icon={<CloudUploadIcon />}
+            text={"Upload Aadhar Photo"}
+            onClick={() => imageUploadRef.current.click()}
+            styles={{}}
+          />
+          <Dropdown
+            label={"What do you sell?"}
+            setInputValue={setSelectedSellingProduct}
+            inputValue={selectedSellingProduct}
+            options={sellingProducts}
+          />
+          <WeightInput
+            inputValue={sellingUnits}
+            setInputValue={setSetSellingUnits}
+          />
+          {/* <Button
+              variant="contained"
+              fullWidth
+              onClick={() => {
+                onSubmit();
+              }}
+            >
+              Submit
+            </Button> */}
+          <CustomButton
+            text={"Submit"}
+            onPress={() => {
               onSubmit();
             }}
-          >
-            Submit
-          </Button>
+          />
         </Box>
-      </form>
+      </Box>
     </Box>
   );
 }

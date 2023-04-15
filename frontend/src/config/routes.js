@@ -1,4 +1,5 @@
 import React from "react";
+import React from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Onboarding from "../screens/supplier/onboarding";
 import OnboardingMan from "../screens/manufacturer/OnboardingMan";
@@ -10,6 +11,7 @@ import SelectManufacturer from "../screens/supplier/selectManufacturer";
 import GetLoan from "../screens/supplier/getLoan";
 import Loan from "../screens/supplier/loan";
 import SelectSupplier from "../screens/manufacturer/SelectSupplier";
+import ApproveLoans from "../screens/manufacturer/ApproveLoans";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -43,10 +45,10 @@ const router = createBrowserRouter([
         path: "selectManufacturer",
         element: <SelectManufacturer />,
       },
-      // {
-      //   path: "getLoan/:id",
-      //   element: <GetLoan />,
-      // },
+      {
+        path: "getLoan/:id",
+        element: <GetLoan />,
+      },
       {
         path: "loan/:id",
         element: <Loan />,
@@ -75,7 +77,7 @@ const router = createBrowserRouter([
           },
           {
             path: "approveLoan",
-            element: <h1>Approve Loan</h1>,
+            element: <ApproveLoans />,
           },
           {
             path: "selectSupplier",

@@ -51,7 +51,7 @@ function MyCard({
       <CardHeader title={name} subheader={aadhar} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Quantity : {aadhar}
+          Quantity : {quantity}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Tenure : {tenure}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Center from '../../components/utils/Center';
 import Typography from '@mui/material/Typography';
 import MyCard from '../../components/MyCard';
 
@@ -33,16 +32,14 @@ const suppliers = [
 function ApproveLoans() {
   return (
     <div>
-      <Typography variant="h4" component="h4" style={{ marginTop: '1rem' }}>
+      <Typography variant="h4" component="h4" style={{ margin: '1rem 0' }}>
         Approve Loans
       </Typography>
-      <Center>
         {suppliers.map((e) => {
           return (
             <MyCard supplier={e} />
           );
         })}
-      </Center>
     </div>
   );
 }

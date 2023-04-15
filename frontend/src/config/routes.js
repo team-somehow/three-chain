@@ -10,7 +10,7 @@ import SelectManufacturer from "../screens/supplier/selectManufacturer";
 import GetLoan from "../screens/supplier/getLoan";
 import Loan from "../screens/supplier/loan";
 import SelectSupplier from "../screens/manufacturer/SelectSupplier";
-import ApproveLoans from "../screens/manufacturer/ApproveLoans";
+import ApproveLoans from '../screens/manufacturer/ApproveLoans';
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "home",
+            path: 'home',
             element: <HomeMan />,
           },
           {
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
             element: <h1>Supplier Select</h1>,
           },
           {
-            path: "batches",
+            path: 'batches',
             element: <h1>My Batches</h1>,
           },
         ],

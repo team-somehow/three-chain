@@ -53,14 +53,14 @@ const BuyerBiddingItem = (props) => {
                             data[i].bids.push({
                                 name: auth.user.name,
                                 amount: amount,
-								walletAddress: auth.user.address,
+                                walletAddress: auth.user.address,
                             });
                         } else {
                             data[i].bids = [
                                 {
                                     name: auth.user.name,
                                     amount: amount,
-									walletAddress: auth.user.address,
+                                    walletAddress: auth.user.address,
                                 },
                             ];
                         }

@@ -4,8 +4,8 @@ import Login from "../components/utils/Login";
 const RegulatorLogin = () => {
     return (
         <Login
-            heading={"Three Chain Manufacturer"}
-            onLoginNavigateTo={"/manufacturer/onboarding"}
+            heading={"Three Chain Regulator"}
+            onLoginNavigateTo={"/regulator"}
         />
     );
 };

@@ -35,6 +35,11 @@ const resources = {
             "Duration (in months)": "Duration (in months)",
             "Request Manufacturer": "Request Manufacturer",
             "Manufacturer ID": "Manufacturer ID",
+            "Supplier Login": "Supplier Login",
+            "Buyer Login": "Buyer Login",
+            "Manufacturer Login": "Manufacturer Login",
+            "Logistics Login": "Logistics Login",
+            "Regulator  Login": "Regulator  Login",
         },
     },
     hi: {
@@ -78,6 +83,11 @@ const resources = {
             "Select Langauge": "भाषा चुनें",
             Hindi: "हिंदी",
             "Manufacturer ID": "मैन्युफैक्चरर आईडी",
+            "Supplier Login": "आपूर्तिकर्ता लॉगिन",
+            "Buyer Login": "खरीदार लॉगिन",
+            "Manufacturer Login": "मैन्युफैक्चरर लॉगिन",
+            "Logistics Login": "लॉजिस्टिक्स लॉगिन",
+            "Regulator  Login": "रेगुलेटर लॉगिन",
         },
     },
 };

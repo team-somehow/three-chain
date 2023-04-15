@@ -1,6 +1,4 @@
 import React from 'react';
-import MyGrid from '../../components/MyGrid';
-import DashboardNavbar from '../../components/DashboardNavbar';
 
 function HomeMan() {
   return (

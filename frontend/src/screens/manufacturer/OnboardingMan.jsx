@@ -36,7 +36,7 @@ function OnboardingMan() {
         />
         <WeightInput placeholder="Enter the Units Expected" />
         <Box>
-          <Link to='/manufacturer/home'>
+          <Link to='/manufacturer/dash/home'>
             <Button
               variant="contained"
               fullWidth

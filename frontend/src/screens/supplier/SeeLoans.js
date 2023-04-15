@@ -38,23 +38,10 @@ const SeeLoans = () => {
           <Box mb={2}>
             <CustomCard>
               <Box>
-                <Typography variant="body1">
-                  Loan Id- <Typography fontWeight={"700"}>{item.id}</Typography>
-                </Typography>
-                <Typography>
-                  Amount-{" "}
-                  <Typography fontWeight={"700"}>{item.amount}</Typography>
-                </Typography>
-                <Typography></Typography>
-                  Payable Amount-{" "}
-                  <Typography fontWeight={"700"}>{item.totalAmount}</Typography>
-                </Typography>
-                <Typography>
-                  Manufacturer ID-{" "}
-                  <Typography fontWeight={"700"}>
-                    {item.manufacturerId}
-                  </Typography>
-                </Typography>
+                <Typography variant="body1">Loan Id- {item.id}</Typography>
+                <Typography>Amount- {item.amount}</Typography>
+                <Typography>Payable Amount- {item.totalAmount}</Typography>
+                <Typography>Manufacturer ID- {item.manufacturerId}</Typography>
                 <Button
                   variant="contained"
                   sx={{

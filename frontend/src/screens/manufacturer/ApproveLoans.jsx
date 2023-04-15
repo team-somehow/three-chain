@@ -49,6 +49,7 @@ function ApproveLoans() {
             // console.log(snapshot);
             let tData = [];
             snapshot.forEach((item) => {
+                console.log(item.id, " => ", item.data());
                 tData.push({ id: item.id, ...item.data() });
             });
             setData(tData);

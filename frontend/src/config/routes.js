@@ -29,6 +29,7 @@ import CustomAppBar from "../components/AppBar";
 import ManufacturerLogin from "../screens/manufacturer/ManufacturerLogin";
 import LogisticsLogin from "../screens/logistics/LogisticsLogin";
 import RegulatorLogin from "../screens/RegulatorLogin";
+import Chat from "../screens/Chat";
 import BuyerLogin from "../screens/buyer/BuyerLogin.jsx";
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -312,6 +313,10 @@ const router = createBrowserRouter([
                 element: <DetailsLog />,
             },
         ],
+    },
+    {
+        path: "/Chat/:uid",
+        element: <Chat />,
     },
 ]);
 

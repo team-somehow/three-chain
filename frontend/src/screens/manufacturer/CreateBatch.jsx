@@ -18,6 +18,7 @@ import ProductNFT from "../../artifacts/contracts/ProductNFT.sol/ProductNFT.json
 import { providers, Contract, ethers } from "ethers";
 import { ProductNFTContractAddress } from "../../constants/constants";
 import { arcanaProvider } from "../..";
+import { useNavigate } from "react-router-dom";
 import CustomCard from "../../components/CustomCard";
 import CustomButton from "../../components/CustomButton";
 
@@ -31,6 +32,7 @@ function CreateBatch() {
         ProductNFT.abi,
         signer
     );
+    const navigate = useNavigate();
 
     const [batch, setBatch] = useState({
         name: "",
@@ -87,6 +89,7 @@ function CreateBatch() {
             }),
         });
         console.log("done");
+        navigate(0);
     }
 
     return (

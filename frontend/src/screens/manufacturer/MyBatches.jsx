@@ -5,19 +5,26 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@arcana/auth-react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import Center from "../../components/utils/Center";
 
 const suppliers = [
     {
-        name: "Batch 1",
-        id: 1,
-        quantity: 100,
-        status: 0,
+        batchId: 925251700490,
+        currentLocation: "Regulator",
+        price: "1",
+        productName: "Rice",
+        quantity: "10",
+        regulatorVerification: false,
+        warehouse: "Mumbai",
     },
     {
-        name: "Batch 2",
-        id: 2,
-        quantity: 1000,
-        status: 1,
+        batchId: 925251700490,
+        currentLocation: "Regulator",
+        price: "1",
+        productName: "Rice",
+        quantity: "10",
+        regulatorVerification: false,
+        warehouse: "Mumbai",
     },
 ];
 
@@ -46,13 +53,23 @@ function MyBatches() {
     }, [auth]);
 
     return (
-        <div style={{ paddingLeft: 20 }}>
+        <div
+            style={{
+                height: "100%",
+                width: "100%",
+                textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                alignSelf: "center",
+                flexDirection: "column",
+            }}
+        >
             <Typography
                 variant="h4"
-                component="h4"
-                style={{ margin: "1rem 0" }}
+                style={{ margin: "2rem 0" }}
+                fontWeight="600"
             >
-                My Batches
+                My Batchs
             </Typography>
             {data.map((e) => {
                 return <Batches {...e} />;

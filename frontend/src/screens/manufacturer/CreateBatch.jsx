@@ -106,7 +106,7 @@ function CreateBatch() {
         >
             <Typography
                 variant="h4"
-                style={{ margin: "2rem 0", color: "white" }}
+                style={{ margin: "2rem 0" }}
                 fontWeight="600"
             >
                 Create Batch

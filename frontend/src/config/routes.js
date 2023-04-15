@@ -55,7 +55,6 @@ const router = createBrowserRouter([
   },
   {
     path: "manufacturer",
-    exact: true,
     children: [
       {
         path: "onboarding",

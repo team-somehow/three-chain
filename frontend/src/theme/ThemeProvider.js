@@ -3,19 +3,18 @@ import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 const StyleThemeProvider = (props) => {
   const useTheme = createTheme({
     palette: {
-      primary: {
-        main: "#4fa0fe",
-        contrastText: "#fcfdfe",
-      },
-      text: {
-        primary: "#474C59",
+      type: "light",
+      // primary: {
+      //   // main: "#1f4e5f",
+      //   light: "#79a8a9",
+      // },
+      secondary: {
+        main: "#aacfd0",
       },
     },
-
     typography: {
-      fontFamily: ["Poppins", "Nunito", "Roboto", "Arial", "sans-serif"].join(
-        ","
-      ),
+      fontFamily: "Poppins",
+      fontWeightRegular: 400,
     },
   });
 

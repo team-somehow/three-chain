@@ -92,8 +92,8 @@ const router = createBrowserRouter([
             element: <h1>Supplier Select</h1>,
           },
           {
-            path: "creatBatch",
-            element: <h1>Supplier Select</h1>,
+            path: "createBatch",
+            element: <CreateBatch />,
           },
           {
             path: "batches",

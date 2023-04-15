@@ -16,7 +16,7 @@ function RuppeInput({ input, setInput }) {
       <OutlinedInput
         type="number"
         id="outlined-adornment-amount"
-        startAdornment={<InputAdornment position="start">₹</InputAdornment>}
+        startAdornment={<InputAdornment position="start"></InputAdornment>}
         value={input}
         onChange={(e) => setInput(e.target.value)}
         label="Amount"

@@ -5,34 +5,37 @@ import ManufacturerBidItem from "../../components/manufacturer/ManufacturerBidIt
 import { db } from "../../config/firebase";
 
 const BidApproval = () => {
-	const [data, setData] = useState([]);
-	useEffect(() => {
-		const getData = async () => {
-			let tData = [];
-			const snapshot = await getDocs(collection(db, "Manufacturer"));
-			snapshot.forEach((doc) => {
-				const t = doc.data();
-				for (let i = 0; i < t.products.length; i++) {
-					if (t.products[i].regulatorVerification) {
-						tData.push(t.products[i]);
-					}
-				}
-			});
-			setData(tData);
-		};
-		getData();
-	}, []);
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        const getData = async () => {
+            let tData = [];
+            const snapshot = await getDocs(collection(db, "Manufacturer"));
+            snapshot.forEach((doc) => {
+                const t = doc.data();
+                for (let i = 0; i < t.products.length; i++) {
+                    if (t.products[i].regulatorVerification) {
+                        tData.push(t.products[i]);
+                    }
+                }
+            });
+            setData(tData);
+        };
+        getData();
+    }, []);
 
-	return (
-		<Box sx={{
-            p:5
-        }}>
-			<Typography variant="h4">Bid Approval</Typography>
-			{data.map((item) => (
-				<ManufacturerBidItem {...item} />
-			))}
-		</Box>
-	);
+    return (
+        <Box
+            sx={{
+                p: 5,
+                width: "100%",
+            }}
+        >
+            <Typography variant="h4">Bid Approval</Typography>
+            {data.map((item) => (
+                <ManufacturerBidItem {...item} />
+            ))}
+        </Box>
+    );
 };
 
 export default BidApproval;

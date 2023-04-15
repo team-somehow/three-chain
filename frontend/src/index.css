@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +6,7 @@
 body {
   background: url("./../public/main-laptop-bg.svg") no-repeat center
     center/cover !important;
-  color: black !important;
+  color: #1f4e5f !important;
   overflow: auto;
   overflow-x: hidden;
   min-height: 100vh;

@@ -66,7 +66,7 @@ function Onboarding() {
           width: "100%",
         }}
       >
-        <Typography variant="h4" mb={10}>
+        <Typography variant="h4" mb={4}>
           Onboarding
         </Typography>
         <Box component={"form"} display={"flex"} flexDirection={"column"}>

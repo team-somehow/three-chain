@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Center from "../../components/utils/Center";
 import { Button, TextField, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -12,38 +12,32 @@ import { useAuth } from "@arcana/auth-react";
 import CustomCard from "../../components/CustomCard";
 import SuperButton from "../../components/SuperButton";
 import CustomButton from "../../components/CustomButton";
+import MultiValueDropdown from "../../components/MutiValueDropdown";
 
-const grains = [
-    { label: "Sugar", id: 1 },
-    { label: "Wheat", id: 2 },
-    { label: "Rice", id: 3 },
-    { label: "Corn", id: 4 },
-    { label: "Oats", id: 5 },
-    { label: "Barley", id: 6 },
-    { label: "Rye", id: 7 },
-    { label: "Millet", id: 8 },
-];
+// const grains = [
+//     { label: "Sugar", id: 1 },
+//     { label: "Wheat", id: 2 },
+//     { label: "Rice", id: 3 },
+//     { label: "Corn", id: 4 },
+//     { label: "Oats", id: 5 },
+//     { label: "Barley", id: 6 },
+//     { label: "Rye", id: 7 },
+//     { label: "Millet", id: 8 },
+// ];
 
 function OnboardingMan() {
-    const selectProductOptions = [
-        "Wheat",
-        "Sugarcane",
-        "Rice",
-        "Cotton",
-        "Maize",
-        "Soybean",
-    ];
-    const [selectedProduct, setSelectedProduct] = useState(
-        selectProductOptions[0]
-    );
+    const selectProductOptions = ["Wheat", "Sugar", "Masala", "Red Chilli"];
+    const [selectedProduct, setSelectedProduct] = useState([
+        selectProductOptions[0],
+    ]);
     const [productRequirement, setProductRequirement] = useState(0);
+    const [product, setProduct] = useState("");
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const auth = useAuth();
 
     const onSubmit = async () => {
-        if (!auth.user) return;
-
+        console.log(auth);
         await addDoc(collection(db, "Manufacturer"), {
             name: auth?.user?.name,
             demandUnits: productRequirement,
@@ -68,7 +62,7 @@ function OnboardingMan() {
                 }}
             >
                 <CustomCard
-                    styles={{ padding: "2rem", width: "40%", margin: "auto" }}
+                    styles={{ padding: "2rem", width: "80%", margin: "auto" }}
                 >
                     <form
                         style={{
@@ -82,8 +76,15 @@ function OnboardingMan() {
                             text={"Upload Aadhar Photo"}
                             styles={{ marginBottom: "1.5rem" }}
                         />
-                        <Dropdown
-                            label={"Select the product"}
+                        <TextField
+                            variant="outlined"
+                            label="Enter product"
+                            value={product}
+                            onChange={(e) => setProduct(e.target.value)}
+                            fullWidth
+                        />
+                        <MultiValueDropdown
+                            label="Select the raw material?"
                             inputValue={selectedProduct}
                             setInputValue={setSelectedProduct}
                             options={selectProductOptions}

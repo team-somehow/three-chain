@@ -8,7 +8,7 @@ import PaymentIcon from '@mui/icons-material/Payment';
 
 function ManufacturerCard({ id, name, demandUnits }) {
     return (
-        <CustomCard>
+        <CustomCard styles={{marginBottom : '1rem'}}>
             <Box>
                 {/* <Typography >Manufacturer {id}</Typography> */}
                 <Typography variant="h5" fontWeight="600">

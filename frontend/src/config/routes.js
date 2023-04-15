@@ -116,6 +116,19 @@ const router = createBrowserRouter([
 		path: "/regulator",
 		element: <Regulator />,
 	},
+	{
+		path: "/buyer",
+		children: [
+			{
+				path: "",
+				element: <BuyerHome />,
+			},
+			{
+				path: "placeBid",
+				element: <BuyerBid />,
+			},
+		],
+	},
 ]);
 
 export default router;

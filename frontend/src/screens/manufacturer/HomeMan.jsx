@@ -14,6 +14,7 @@ function HomeMan() {
         renderWorldCopies={false}
         onClick={() => {}}
       >
+        {/* pin */}
         <Marker
           latitude={19.100343}
           longitude={72.898441}
@@ -22,6 +23,62 @@ function HomeMan() {
         >
           <img
             src={process.env.PUBLIC_URL + "/map/pin1.png"}
+            width={30}
+            alt="da"
+          />
+        </Marker>
+
+        {/* pin */}
+        <Marker
+          latitude={15.3173}
+          longitude={75.7139}
+          style={markerStyle}
+          onClick={() => {}}
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/map/pin2.png"}
+            width={30}
+            alt="da"
+          />
+        </Marker>
+
+        {/* pin */}
+        <Marker
+          latitude={19.8702388}
+          longitude={75.2227995}
+          style={markerStyle}
+          onClick={() => {}}
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/map/pin2.png"}
+            width={30}
+            alt="da"
+          />
+        </Marker>
+
+        {/* pin */}
+        <Marker
+          latitude={19.9662361}
+          longitude={79.1931393}
+          style={markerStyle}
+          onClick={() => {}}
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/map/pin3.png"}
+            width={30}
+            alt="da"
+          />
+        </Marker>
+
+        {/* warehouse */}
+        <Marker
+          latitude={17.3391522}
+          longitude={76.7575381}
+          style={markerStyle}
+          onClick={() => {}}
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/map/manu.png"}
             width={30}
             alt="da"
           />

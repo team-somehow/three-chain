@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, Outlet, useNavigate } from "react-router-dom";
 import Onboarding from "../screens/supplier/onboarding";
 import OnboardingMan from "../screens/manufacturer/OnboardingMan";
 import HomeMan from "../screens/manufacturer/HomeMan";
@@ -23,11 +23,11 @@ import BuyerHome from "../screens/buyer/BuyerHome";
 import BuyerBid from "../screens/buyer/BuyerBid";
 import BidApproval from "../screens/manufacturer/BidApproval";
 import Home from "../screens/supplier/Home";
+import CustomAppBar from "../components/AppBar";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
-
 const router = createBrowserRouter([
     {
         path: "/",

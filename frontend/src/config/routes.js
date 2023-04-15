@@ -1,5 +1,4 @@
 import React from "react";
-import React from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Onboarding from "../screens/supplier/onboarding";
 import OnboardingMan from "../screens/manufacturer/OnboardingMan";

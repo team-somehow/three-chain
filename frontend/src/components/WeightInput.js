@@ -5,7 +5,11 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import React from "react";
-function WeightInput({placeholder = "Enter Units"}) {
+function WeightInput({
+  placeholder = "Enter Units",
+  inputValue,
+  setInputValue,
+}) {
   return (
     <FormControl sx={{ my: 1, width: "100%" }} variant="outlined">
       <OutlinedInput
@@ -16,6 +20,8 @@ function WeightInput({placeholder = "Enter Units"}) {
         inputProps={{
           "aria-label": "weight",
         }}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
       />
       {/* <FormHelperText id="outlined-weight-helper-text">Weight</FormHelperText> */}
     </FormControl>

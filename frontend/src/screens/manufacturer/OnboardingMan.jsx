@@ -30,6 +30,7 @@ function OnboardingMan() {
   const [selectedProduct, setSelectedProduct] = useState(
     selectProductOptions[0]
   );
+  const [productRequirement, setProductRequirement] = useState(0);
   return (
     <Box m={2}>
       <h1 style={{ textAlign: "center" }}>Supplier Onboarding</h1>
@@ -48,7 +49,11 @@ function OnboardingMan() {
           setInputValue={setSelectedProduct}
           options={selectProductOptions}
         />
-        <WeightInput placeholder="Enter the Units Expected" />
+        <WeightInput
+          placeholder="Enter the Units Expected"
+          inputValue={productRequirement}
+          setInputValue={setProductRequirement}
+        />
         <Box>
           <Link to="/manufacturer/dash/home">
             <Button

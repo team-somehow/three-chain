@@ -14,7 +14,7 @@ const StyleThemeProvider = (props) => {
     },
     typography: {
       fontFamily: "Poppins",
-      fontWeightRegular: 400,
+      fontWeightRegular: 500,
     },
   });
 

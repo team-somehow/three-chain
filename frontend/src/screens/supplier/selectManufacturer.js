@@ -5,10 +5,11 @@ import ManufacturerCard from "../../components/ManufacturerCard";
 import { db } from "../../config/firebase";
 import CustomCard from "../../components/CustomCard";
 import CustomAppBar from "../../components/AppBar";
+import { useTranslation } from "react-i18next";
 
 function SelectManufacturer() {
     const [mList, setMList] = useState([]);
-
+    const { t, i18n } = useTranslation();
     useEffect(() => {
         const getData = async () => {
             const snapshot = await getDocs(collection(db, "Manufacturer"));
@@ -23,7 +24,7 @@ function SelectManufacturer() {
     return (
         <>
             <CustomAppBar
-                title="Select Manufacturer"
+                title={t("Select Manufacturer")}
                 onBackUrl={"/supplier/home"}
             />
             <Box sx={{margin : '2rem 1rem'}}>

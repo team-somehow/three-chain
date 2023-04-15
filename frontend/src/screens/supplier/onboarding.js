@@ -9,9 +9,15 @@ import CardBg from "../../assets/card-bg.svg";
 import SuperButton from "../../components/SuperButton";
 import CustomButton from "../../components/CustomButton";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
+
 function Onboarding() {
     const navigate = useNavigate();
-
+    const { t, i18n } = useTranslation();
+    const changeLanguage = () => i18n.changeLanguage("en");
+    useEffect(() => {
+        i18n.changeLanguage("en");
+    }, []);
     const sellingProducts = [
         "Wheat",
         "Sugarcane",

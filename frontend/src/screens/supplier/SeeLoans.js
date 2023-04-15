@@ -8,11 +8,12 @@ import CustomCard from "../../components/CustomCard";
 import CustomButton from "../../components/CustomButton";
 import CheckIcon from "@mui/icons-material/Check";
 import CustomAppBar from "../../components/AppBar";
+import { useTranslation } from "react-i18next";
 
 const SeeLoans = () => {
     const auth = useAuth();
     const [data, setData] = useState([]);
-
+    const { t, i18n } = useTranslation();
     useEffect(() => {
         const getData = async () => {
             const q = query(
@@ -31,7 +32,7 @@ const SeeLoans = () => {
 
     return (
         <>
-            <CustomAppBar title="My Loans" onBackUrl={"/supplier/home"} />
+            <CustomAppBar title={t("My Loans")} onBackUrl={"/supplier/home"} />
             <Box m={2}>
                 {/* <Typography mb={2} variant="h4">
                     My Loans
@@ -42,16 +43,18 @@ const SeeLoans = () => {
                             <CustomCard>
                                 <Box>
                                     <Typography variant="body1">
-                                        Loan Id- {item.id}
+                                        {t("Loan Id")}- {item.id}
                                     </Typography>
                                     <Typography>
-                                        Amount- {item.amount}
+                                        {t("Amount")}- {item.amount}
                                     </Typography>
                                     <Typography>
-                                        Payable Amount- {item.totalAmount}
+                                        {t("Payable Amount")}-{" "}
+                                        {item.totalAmount}
                                     </Typography>
                                     <Typography>
-                                        Manufacturer ID- {item.manufacturerId}
+                                        {t("Manufacturer ID")}-{" "}
+                                        {item.manufacturerId}
                                     </Typography>
                                     <Button
                                         variant="contained"
@@ -68,7 +71,7 @@ const SeeLoans = () => {
                                         {item.loanStatus === "Paid" && (
                                             <CheckIcon />
                                         )}
-                                        {item.loanStatus}
+                                        {t(item.loanStatus)}
                                     </Button>
                                     {item.loanStatus === "Approved" && (
                                         <Link
@@ -87,7 +90,7 @@ const SeeLoans = () => {
                       Repay Loan
                     </Button> */}
                                             <CustomButton
-                                                text={"Repay Loan"}
+                                                text={t("Repay Loan")}
                                                 onPress={() => {}}
                                             />
                                         </Link>

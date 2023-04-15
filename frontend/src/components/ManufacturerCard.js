@@ -32,11 +32,11 @@ function ManufacturerCard({ id, name, demandUnits }) {
           >
             Get Loan
           </Button> */}
-                    <CustomButton text={"Get Loan"} onPress={() => {}} icon={<PaymentIcon sx={{marginRight : '0.5rem'}} />} />
-                </Link>
-            </Box>
-        </CustomCard>
-    );
+          <CustomButton text={"Get Loan"} onPress={() => {}} />
+        </Link>
+      </Box>
+    </CustomCard>
+  );
 }
 
 export default ManufacturerCard;

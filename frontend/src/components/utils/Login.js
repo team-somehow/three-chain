@@ -10,13 +10,15 @@ const Login = ({ onLoginNavigateTo, heading }) => {
     useEffect(() => {
         console.log("auth in Login.js", auth);
         if (auth.isLoggedIn) {
-            // navigate(onLoginNavigateTo);
+            navigate(onLoginNavigateTo);
         }
     }, [auth, navigate, onLoginNavigateTo]);
 
     return (
         <div className="bg min-h-screen">
-            <h1 className="text-center text-4xl p-8 font-black text-white">{heading}</h1>
+            <h1 className="text-center text-4xl p-8 font-black text-white">
+                {heading}
+            </h1>
             {auth.loading ? (
                 <div className="loading mt-40">
                     <CircularProgress />

@@ -29,6 +29,7 @@ import CustomAppBar from "../components/AppBar";
 import ManufacturerLogin from "../screens/manufacturer/ManufacturerLogin";
 import LogisticsLogin from "../screens/logistics/LogisticsLogin";
 import RegulatorLogin from "../screens/RegulatorLogin";
+import BuyerLogin from "../screens/buyer/BuyerLogin.jsx";
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
@@ -137,6 +138,10 @@ const router = createBrowserRouter([
     {
         path: "/buyer",
         children: [
+          {
+            path: "login",
+            element: <BuyerLogin />,
+          }
             {
                 path: "",
                 element: <BuyerHome />,

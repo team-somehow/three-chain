@@ -15,6 +15,7 @@ import SeeLoans from '../screens/supplier/SeeLoans';
 import MyBatches from '../screens/manufacturer/MyBatches';
 import CreateBatch from '../components/CreateBatch';
 import Regulator from '../screens/Regulator';
+import RepayLoan from "../screens/supplier/RepayLoan";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -79,23 +80,23 @@ const router = createBrowserRouter([
         ),
         children: [
           {
-            path: '',
+            path: "",
             element: <HomeMan />,
           },
           {
-            path: 'approveLoan',
+            path: "approveLoan",
             element: <ApproveLoans />,
           },
           {
-            path: 'selectSupplier',
+            path: "selectSupplier",
             element: <h1>Supplier Select</h1>,
           },
           {
-            path: 'createBatch',
-            element: <CreateBatch />,
+            path: "creatBatch",
+            element: <h1>Supplier Select</h1>,
           },
           {
-            path: 'batches',
+            path: "batches",
             element: <MyBatches />,
           },
         ],

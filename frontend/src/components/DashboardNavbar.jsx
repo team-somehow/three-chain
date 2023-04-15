@@ -67,47 +67,6 @@ const DashboardNavbar = (props) => {
                             </ListItemText>
                         </ListItem>
                     </div>
-    const navigate = useNavigate();
-    const currentRoute = useLocation().pathname;
-    return (
-        <Drawer
-            sx={{
-                width: 280,
-                flexShrink: 0,
-                "& .MuiDrawer-paper": {
-                    width: 280,
-                    boxSizing: "border-box",
-                    // background: "rgba(252, 254, 254, 0.43)",
-                    background: "#F4F7F7",
-                    // backdropFilter: "blur(25px)",
-                },
-            }}
-            variant="permanent"
-            anchor="left"
-            classes={{ paper: "awesome-bg-0" }}
-        >
-            <Box role="presentation" p={2}>
-                <List>
-                    <div
-                        style={{
-                            // paddingLeft: "18px",
-                            marginTop: "-12px",
-                            marginBottom: "28px",
-                            cursor: "pointer",
-                            display: "flex",
-                            alignItems: "center",
-                        }}
-                    >
-                        <ListItem
-                            onClick={() => navigate("/manufacturer/dash")}
-                        >
-                            <ListItemText>
-                                <h1 className="text-[#1f4e5f] font-black text-2xl">
-                                    Manufacturer Dashboard
-                                </h1>
-                            </ListItemText>
-                        </ListItem>
-                    </div>
 
                     <NavLink
                         text={"Approve Bid"}

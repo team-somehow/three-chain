@@ -77,7 +77,11 @@ describe("ProductNFT", function () {
     await contract.connect(seller).escrowBatch(batchUid, bidder2.address);
   });
 
-  it("end escrow", async function () {
-    await contract.connect(seller).escrowEnd(batchUid);
+  it("logistics end escrow", async function () {
+    await contract.connect(seller).escrowEndLogistics(batchUid);
+  });
+
+  it("buyer end escrow", async function () {
+    await contract.connect(seller).escrowEndBuyer(batchUid);
   });
 });

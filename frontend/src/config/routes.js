@@ -13,6 +13,7 @@ import SelectSupplier from "../screens/manufacturer/SelectSupplier";
 import ApproveLoans from "../screens/manufacturer/ApproveLoans";
 import SeeLoans from "../screens/supplier/SeeLoans";
 import MyBatches from "../screens/manufacturer/MyBatches";
+import CreateBatch from "../components/CreateBatch";
 import RepayLoan from "../screens/supplier/RepayLoan";
 
 // import Home from "../screens/Home";

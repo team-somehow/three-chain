@@ -24,6 +24,7 @@ function Loan() {
 			totalAmount: totalAmount,
 			loanStatus: "Requested",
 			manufacturerId: id,
+			tenure: selectedDuration,
 		});
 		console.log("Done");
 	};

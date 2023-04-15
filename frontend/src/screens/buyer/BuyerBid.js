@@ -4,11 +4,12 @@ import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import BuyerBiddingItem from "../../components/buyer/BuyerBiddingItem";
 import { db } from "../../config/firebase";
+import BuyerDashboardNavbar from "../../components/BuyerDashboardNavbar";
 
 const BuyerBid = () => {
     const auth = useAuth();
-
     const [data, setData] = useState([]);
+
     useEffect(() => {
         if (!auth.user) return;
 
@@ -41,15 +42,21 @@ const BuyerBid = () => {
     }, [auth]);
 
     return (
-        <Box>
-            <Typography variant="h3" align="center">
-                Bid for Items
-            </Typography>
-            {data.map((item) => {
-                return (
-                    <BuyerBiddingItem key={JSON.stringify(item)} {...item} />
-                );
-            })}
+        <Box display={"flex"}>
+            <BuyerDashboardNavbar />
+            <Box m={2}>
+                <Typography variant="h3" align="center">
+                    Bid for Items
+                </Typography>
+                {data.map((item) => {
+                    return (
+                        <BuyerBiddingItem
+                            key={JSON.stringify(item)}
+                            {...item}
+                        />
+                    );
+                })}
+            </Box>
         </Box>
     );
 };

@@ -5,6 +5,7 @@ import Center from "../components/utils/Center";
 import { useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
+import { useNavigate } from "react-router";
 
 const suppliers = [
     {
@@ -22,6 +23,8 @@ const suppliers = [
 ];
 
 function Regulator() {
+    const navigate = useNavigate();
+
     const [data, setData] = React.useState([]);
     useEffect(() => {
         const getData = async () => {

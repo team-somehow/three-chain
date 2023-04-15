@@ -8,7 +8,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -22,6 +22,8 @@ import { arcanaProvider } from "..";
 import { ProductNFTContractAddress } from "../constants/constants";
 
 function MyCard(props) {
+    const navigate = useNavigate();
+
     const provider = new providers.Web3Provider(arcanaProvider.provider);
     // get the end user
     const signer = provider.getSigner();
@@ -81,7 +83,9 @@ function MyCard(props) {
                 products: data,
             });
         };
-        getData();
+        await getData();
+
+        navigate(0);
     };
     return (
         <Card sx={{ width: 600, marginBottom: 2 }}>

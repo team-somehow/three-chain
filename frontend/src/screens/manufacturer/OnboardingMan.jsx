@@ -43,7 +43,7 @@ function OnboardingMan() {
             demandUnits: productRequirement,
             uid: auth?.user?.address,
         });
-        console.log("Done");
+        navigate("/manufacturer/dash");
     };
 
     return (

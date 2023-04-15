@@ -22,11 +22,7 @@ export default function MultiValueDropdown({
                 defaultValue={[options[0]]}
                 filterSelectedOptions
                 renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="filterSelectedOptions"
-                        placeholder={label}
-                    />
+                    <TextField {...params} label={label} placeholder={label} />
                 )}
                 value={inputValue}
                 onChange={(e, value) => setInputValue(value)}

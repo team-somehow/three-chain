@@ -42,6 +42,8 @@ function OnboardingMan() {
     const auth = useAuth();
 
     const onSubmit = async () => {
+        if (!auth.user) return;
+
         await addDoc(collection(db, "Manufacturer"), {
             name: auth?.user?.name,
             demandUnits: productRequirement,

@@ -22,6 +22,7 @@ import DetailsLog from "../screens/logistics/DetailsLog";
 import BuyerHome from "../screens/buyer/BuyerHome";
 import BuyerBid from "../screens/buyer/BuyerBid";
 import BidApproval from "../screens/manufacturer/BidApproval";
+import Home from "../screens/supplier/Home";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path: "repay/:id",
                 element: <RepayLoan />,
+            },
+            {
+                path: "home",
+                element: <Home />,
             },
             {
                 path: "/supplier/seeLoans",

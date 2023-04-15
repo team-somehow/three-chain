@@ -1,21 +1,24 @@
-import React from "react";
-import { createBrowserRouter, Outlet } from "react-router-dom";
-import Onboarding from "../screens/supplier/onboarding";
-import OnboardingMan from "../screens/manufacturer/OnboardingMan";
-import HomeMan from "../screens/manufacturer/HomeMan";
-import { Box } from "@mui/material";
-import DashboardNavbar from "../components/DashboardNavbar";
-import SupplierLogin from "../screens/supplier/SupplierLogin";
-import SelectManufacturer from "../screens/supplier/selectManufacturer";
-import GetLoan from "../screens/supplier/getLoan";
-import Loan from "../screens/supplier/loan";
-import SelectSupplier from "../screens/manufacturer/SelectSupplier";
-import ApproveLoans from "../screens/manufacturer/ApproveLoans";
-import SeeLoans from "../screens/supplier/SeeLoans";
-import MyBatches from "../screens/manufacturer/MyBatches";
-import CreateBatch from "../screens/manufacturer/CreateBatch";
-import Regulator from "../screens/Regulator";
-import RepayLoan from "../screens/supplier/RepayLoan";
+import React from 'react';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
+import Onboarding from '../screens/supplier/onboarding';
+import OnboardingMan from '../screens/manufacturer/OnboardingMan';
+import HomeMan from '../screens/manufacturer/HomeMan';
+import { Box } from '@mui/material';
+import DashboardNavbar from '../components/DashboardNavbar';
+import SupplierLogin from '../screens/supplier/SupplierLogin';
+import SelectManufacturer from '../screens/supplier/selectManufacturer';
+import GetLoan from '../screens/supplier/getLoan';
+import Loan from '../screens/supplier/loan';
+import SelectSupplier from '../screens/manufacturer/SelectSupplier';
+import ApproveLoans from '../screens/manufacturer/ApproveLoans';
+import SeeLoans from '../screens/supplier/SeeLoans';
+import MyBatches from '../screens/manufacturer/MyBatches';
+import CreateBatch from '../screens/manufacturer/CreateBatch';
+import Regulator from '../screens/Regulator';
+import RepayLoan from '../screens/supplier/RepayLoan';
+import LogisticsNavbar from '../components/LogisticsNav';
+import HomeLog from '../screens/logistics/HomeLog';
+import DetailsLog from '../screens/logistics/DetailsLog';
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -23,84 +26,84 @@ import RepayLoan from "../screens/supplier/RepayLoan";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <h1>Home</h1>,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <h1>Login </h1>,
   },
   {
-    path: "/supplier",
+    path: '/supplier',
     children: [
       {
-        path: "/supplier/login",
+        path: '/supplier/login',
         element: <SupplierLogin />,
       },
       {
-        path: "/supplier/login",
+        path: '/supplier/login',
         element: <SupplierLogin />,
       },
       {
-        path: "/supplier/onboarding",
+        path: '/supplier/onboarding',
         element: <Onboarding />,
       },
       {
-        path: "selectManufacturer",
+        path: 'selectManufacturer',
         element: <SelectManufacturer />,
       },
       {
-        path: "getLoan/:id",
+        path: 'getLoan/:id',
         element: <GetLoan />,
       },
       {
-        path: "loan/:id",
+        path: 'loan/:id',
         element: <Loan />,
       },
       {
-        path: "repay/:id",
+        path: 'repay/:id',
         element: <RepayLoan />,
       },
       {
-        path: "/supplier/seeLoans",
+        path: '/supplier/seeLoans',
         element: <SeeLoans />,
       },
     ],
   },
   {
-    path: "manufacturer",
+    path: 'manufacturer',
     children: [
       {
-        path: "onboarding",
+        path: 'onboarding',
         element: <OnboardingMan />,
       },
       {
-        path: "dash",
+        path: 'dash',
         element: (
-          <Box display={"flex"}>
+          <Box display={'flex'}>
             <DashboardNavbar />
             <Outlet />
           </Box>
         ),
         children: [
           {
-            path: "",
+            path: '',
             element: <HomeMan />,
           },
           {
-            path: "approveLoan",
+            path: 'approveLoan',
             element: <ApproveLoans />,
           },
           {
-            path: "selectSupplier",
+            path: 'selectSupplier',
             element: <h1>Supplier Select</h1>,
           },
           {
-            path: "createBatch",
+            path: 'createBatch',
             element: <CreateBatch />,
           },
           {
-            path: "batches",
+            path: 'batches',
             element: <MyBatches />,
           },
         ],
@@ -108,8 +111,27 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/regulator",
+    path: '/regulator',
     element: <Regulator />,
+  },
+  {
+    path: '/logistics',
+    element: (
+      <Box display={'flex'}>
+        <LogisticsNavbar />
+        <Outlet />
+      </Box>
+    ),
+    children: [
+      {
+        path: '',
+        element: <HomeLog />,
+      },
+      {
+        path: 'details',
+        element: <DetailsLog />,
+      },
+    ],
   },
 ]);
 

@@ -41,7 +41,7 @@ function Home() {
                 />
                 <Dropdown
                     label={t("Select Langauge")}
-                    options={["English", "Hindi"]}
+                    options={["English", t("Hindi")]}
                     inputValue={selectedLang}
                     setInputValue={setSelectedLang}
                 />

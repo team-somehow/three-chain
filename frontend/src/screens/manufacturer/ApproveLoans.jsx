@@ -49,6 +49,7 @@ function ApproveLoans() {
             // console.log(snapshot);
             let tData = [];
             snapshot.forEach((item) => {
+                console.log(item.id, " => ", item.data());
                 tData.push({ id: item.id, ...item.data() });
             });
             setData(tData);
@@ -58,7 +59,11 @@ function ApproveLoans() {
     }, [auth]);
 
     return (
-        <div>
+        <div
+            style={{
+                paddingLeft: 20,
+            }}
+        >
             <Typography
                 variant="h4"
                 component="h4"

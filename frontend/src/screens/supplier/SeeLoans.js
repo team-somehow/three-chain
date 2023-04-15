@@ -80,21 +80,23 @@ const SeeLoans = () => {
                                                 marginLeft: "10px",
                                             }}
                                         >
-                                            {/* <Button
-                      sx={{
-                        ml: 2,
-                      }}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Repay Loan
-                    </Button> */}
                                             <CustomButton
                                                 text={t("Repay Loan")}
                                                 onPress={() => {}}
                                             />
                                         </Link>
                                     )}
+                                    <Link
+                                        to={"/chat/" + item.manufacturerId}
+                                        style={{
+                                            marginLeft: 10,
+                                        }}
+                                    >
+                                        <CustomButton
+                                            text={"Chat"}
+                                            onPress={() => {}}
+                                        />
+                                    </Link>
                                 </Box>
                             </CustomCard>
                         </Box>

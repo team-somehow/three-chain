@@ -80,12 +80,12 @@ function Onboarding() {
                     display={"flex"}
                     flexDirection={"column"}
                 >
-                    <input
+                    {/* <input
                         onChange={(e) => setImage(e.target.files)}
                         ref={imageUploadRef}
                         type="file"
                         style={{ display: "none" }}
-                    />
+                    /> */}
                     {/* <Button
           variant="contained"
           size="large"

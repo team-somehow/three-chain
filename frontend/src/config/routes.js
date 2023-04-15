@@ -13,6 +13,7 @@ import SelectSupplier from "../screens/manufacturer/SelectSupplier";
 import ApproveLoans from "../screens/manufacturer/ApproveLoans";
 import SeeLoans from "../screens/supplier/SeeLoans";
 import MyBatches from "../screens/manufacturer/MyBatches";
+import CreateBatch from "../components/CreateBatch";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -89,8 +90,8 @@ const router = createBrowserRouter([
 						element: <h1>Supplier Select</h1>,
 					},
 					{
-						path: "creatBatch",
-						element: <h1>Supplier Select</h1>,
+						path: "createBatch",
+						element: <CreateBatch />,
 					},
 					{
 						path: "batches",

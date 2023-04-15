@@ -72,8 +72,8 @@ const DashboardNavbar = (props) => {
           <NavLink
             text={'Create Batch'}
             icon={<AddIcon />}
-            onClickNavigateTo="/manufacturer/dash/creatBatch"
-            isActive={currentRoute === '/manufacturer/dash/creatBatch'}
+            onClickNavigateTo="/manufacturer/dash/createBatch"
+            isActive={currentRoute === '/manufacturer/dash/createBatch'}
           />
         </List>
         <Box

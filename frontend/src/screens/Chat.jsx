@@ -8,7 +8,7 @@ import Center from "../components/utils/Center";
 import CustomCard from "../components/CustomCard";
 import CustomButton from "../components/CustomButton";
 import SendIcon from "@mui/icons-material/Send";
-import Divider from '@mui/material/Divider';
+import Divider from "@mui/material/Divider";
 
 const Chat = () => {
     const { uid } = useParams();
@@ -47,27 +47,41 @@ const Chat = () => {
                     width: "75%",
                     height: "90%",
                     boxShadow:
-                        "10px 10px 10px #868686, -10px -10px 10px #ffffff",
+                        "12px 12px 80px #a6a6a6, -12px -12px 80px #ffffff",
+                    display: "flex",
+                    flexDirection: "column",
                 }}
             >
-                <Typography variant='h6' fontWeight='600' textAlign='center'>Chat</Typography>
-                <Divider sx={{marginTop: '1rem'}}/>
+                <Typography variant="h6" fontWeight="600" textAlign="center">
+                    Chat
+                </Typography>
+                <Divider sx={{ margin: "2rem 0", width: "100%" }} />
                 {data.map((item) => {
                     return (
-                        <Typography
-                            sx={{
-                                float:
-                                    item.to === auth.user.address
-                                        ? "right"
-                                        : "left",
-                                color:
-                                    item.to === auth.user.address
-                                        ? "green"
-                                        : "blue",
-                            }}
-                        >
-                            {item.content}
-                        </Typography>
+                        <Box sx={{ width: "100%" }}>
+                            <Typography
+                                sx={{
+                                    float:
+                                        item.to === auth.user.address
+                                            ? "right"
+                                            : "left",
+                                    backgroundColor:
+                                        item.to === auth.user.address
+                                            ? "green"
+                                            : "blue",
+                                    textAlign:
+                                        item.to === auth.user.address
+                                            ? "right"
+                                            : "left",
+                                    padding: "0.5rem 2.5rem",
+                                    borderRadius: "2rem",
+                                    color: "white",
+                                    fontWeight: "500",
+                                }}
+                            >
+                                {item.content}
+                            </Typography>
+                        </Box>
                     );
                 })}
                 <Box
@@ -84,12 +98,16 @@ const Chat = () => {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Type here..."
-                        sx={{ width: "75%" , height : 'auto'}}
+                        sx={{ width: "75%", height: "auto" }}
                     />
                     <CustomButton
                         onPress={() => sendMessage()}
                         text="Send"
-                        styles={{ width: "30%", marginLeft: "0.5rem", height : 'auto' }}
+                        styles={{
+                            width: "30%",
+                            marginLeft: "0.5rem",
+                            height: "auto",
+                        }}
                         icon={<SendIcon sx={{ marginRight: "0.5rem" }} />}
                     />
                 </Box>

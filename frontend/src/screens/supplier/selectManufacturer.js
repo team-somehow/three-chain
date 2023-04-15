@@ -34,6 +34,7 @@ function SelectManufacturer() {
                             id={m.manufacturerId}
                             name={m.name}
                             demandUnits={m.demandUnits}
+                            uid={m.uid}
                         />
                     );
                 })}

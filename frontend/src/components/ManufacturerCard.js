@@ -6,7 +6,7 @@ import CustomButton from "./CustomButton";
 import ChatIcon from "@mui/icons-material/Chat";
 import PaymentIcon from "@mui/icons-material/Payment";
 
-function ManufacturerCard({ id, name, demandUnits }) {
+function ManufacturerCard({ uid, name, demandUnits }) {
     return (
         <CustomCard styles={{ marginBottom: "1rem" }}>
             <Box>
@@ -17,7 +17,7 @@ function ManufacturerCard({ id, name, demandUnits }) {
                 <Typography className="py-3" fontWeight="500" variant="h6">
                     Demand Units: {demandUnits} kg
                 </Typography>
-                <Link to={"/chat/" + id}>
+                <Link to={"/chat/" + uid}>
                     <CustomButton
                         text={"Chat"}
                         onPress={() => {}}
@@ -28,7 +28,7 @@ function ManufacturerCard({ id, name, demandUnits }) {
                     />
                 </Link>
                 <Link
-                    to={"/supplier/loan/" + id}
+                    to={"/supplier/loan/" + uid}
                     style={{
                         marginLeft: "18px",
                     }}

@@ -37,7 +37,7 @@ contract ProductNFT is ERC721A {
         uint256 quantity,
         string memory name,
         uint256 batchUid
-    ) public payable {
+    ) public {
         uint256 start = _nextTokenId();
         batchData[batchUid].name = name;
         batchData[batchUid].quantity = quantity;

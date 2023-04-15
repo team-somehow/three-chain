@@ -24,7 +24,7 @@ const DashboardNavbar = (props) => {
           width: 280,
           boxSizing: "border-box",
           // background: "rgba(252, 254, 254, 0.43)",
-          // background: "rgba(255, 0, 0, 0.85)",
+          background: "#F4F7F7",
           // backdropFilter: "blur(25px)",
         },
       }}
@@ -42,6 +42,7 @@ const DashboardNavbar = (props) => {
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
+
             }}
           >
             <ListItem onClick={() => navigate("/manufacturer/dash")}>

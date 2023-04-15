@@ -33,9 +33,7 @@ describe("ProductNFT", function () {
 
   it("should mint a batch of NFTs", async () => {
     // Ensure that batch minting works correctly
-    await contract.connect(seller).batchMint(quantity, name, batchUid, {
-      value: ethers.utils.parseEther("1"),
-    });
+    await contract.connect(seller).batchMint(quantity, name, batchUid);
     expect(await contract.balanceOf(seller.address)).to.equal(quantity);
 
     // Ensure that batch data is stored correctly

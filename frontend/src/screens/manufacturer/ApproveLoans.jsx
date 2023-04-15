@@ -58,7 +58,7 @@ function ApproveLoans() {
   }, [auth]);
 
   return (
-    <div>
+    <div style={{paddingLeft : 20}}>
       <Typography variant="h4" component="h4" style={{ margin: "1rem 0" }}>
         Approve Loans
       </Typography>

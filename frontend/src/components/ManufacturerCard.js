@@ -33,7 +33,7 @@ function ManufacturerCard({ id, name, demandUnits }) {
           >
             Get Loan
           </Button> */}
-          <CustomButton text={"Get Loan"} />
+          <CustomButton text={"Get Loan"} onPress={() => {}} />
         </Link>
       </Box>
     </CustomCard>

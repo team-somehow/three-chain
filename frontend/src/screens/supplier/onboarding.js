@@ -8,6 +8,7 @@ import { db, auth } from "../../config/firebase";
 import CardBg from "../../assets/card-bg.svg";
 import SuperButton from "../../components/SuperButton";
 import CustomButton from "../../components/CustomButton";
+import CustomCard from "../../components/CustomCard";
 function Onboarding() {
   const sellingProducts = [
     "Wheat",
@@ -47,25 +48,12 @@ function Onboarding() {
     <Box
       width={"100%"}
       height={"100vh"}
+      m={2}
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
     >
-      <Box
-        sx={{
-          background: `url('${CardBg}') no-repeat center center !important`,
-          backdropFilter: "blur(6px)",
-          borderRadius: "15px",
-          padding: "1rem",
-          margin: "1rem",
-          overflow: "hidden",
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
+      <CustomCard>
         <Typography variant="h4" mb={4}>
           Onboarding
         </Typography>
@@ -117,7 +105,7 @@ function Onboarding() {
             }}
           />
         </Box>
-      </Box>
+      </CustomCard>
     </Box>
   );
 }

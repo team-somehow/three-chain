@@ -4,7 +4,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import { InputLabel, OutlinedInput } from "@mui/material";
 
-function RuppeInput() {
+function RuppeInput({ input, setInput }) {
   return (
     <FormControl
       fullWidth
@@ -17,6 +17,8 @@ function RuppeInput() {
         type="number"
         id="outlined-adornment-amount"
         startAdornment={<InputAdornment position="start">₹</InputAdornment>}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
         label="Amount"
       />
     </FormControl>

@@ -8,7 +8,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
-import { Button } from "@mui/material";
+import { Box, Button, Divider, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
@@ -59,40 +59,51 @@ function MyCard(props) {
     }, [props]);
 
     return (
-        <Card sx={{ width: 600, marginBottom: 2 }}>
-            <CardHeader title={props.name} />
-            <CardContent>
-                <Typography variant="body2" color="text.secondary">
+        <Card sx={{ width: 600, marginBottom: 2, p: 2 }}>
+            <Box
+                display={"flex"}
+                justifyContent={"space-between"}
+                alignItems={"center"}
+            >
+                <Typography variant="h5">{props.name}</Typography>
+                <Button>Details</Button>
+            </Box>
+            <Divider
+                sx={{
+                    my: 1,
+                }}
+            />
+            <Box display={"flex"} alignItems={"center"}>
+                <Typography mr={4} fontSize={"large"} color="text.secondary">
                     Tenure : {props.tenure}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography fontSize={"large"} color="text.secondary">
                     Interest : {props.interest}
                 </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-                <Link to={`/chat/${props.manufacturerId}`}>
-                    <Button aria-label="add to favorites" variant="contained">
-                        <ChatIcon /> Chat
-                    </Button>
-                </Link>
-                <Button
-                    aria-label="share"
-                    onClick={loanApprove}
-                    variant="contained"
-                    color="success"
-                    sx={{ ml: 1 }}
-                >
-                    <CheckCircleIcon /> Approve Loan
+            </Box>
+
+            <Divider
+                sx={{
+                    my: 1,
+                    mb: 2,
+                }}
+            />
+            <Link to={`/chat/${props.manufacturerId}`}>
+                <Button aria-label="add to favorites" variant="contained">
+                    <ChatIcon />
+                    <Typography ml={1}>Chat</Typography>
                 </Button>
-                <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                    <ExpandMoreIcon />
-                </ExpandMore>
-            </CardActions>
+            </Link>
+            <Button
+                aria-label="share"
+                onClick={loanApprove}
+                variant="contained"
+                color="success"
+                sx={{ ml: 1 }}
+            >
+                <CheckCircleIcon />
+                <Typography ml={1}>Approve Loan</Typography>
+            </Button>
             {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
 					<Typography paragraph>Details:</Typography>

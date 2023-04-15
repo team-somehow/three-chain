@@ -54,6 +54,7 @@ function ApproveLoans() {
             });
             setData(tData);
             console.log(tData);
+            setData(suppliers); //! Only for testing
         };
         getData();
     }, [auth]);

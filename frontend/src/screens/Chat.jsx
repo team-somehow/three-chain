@@ -58,19 +58,19 @@ const Chat = () => {
                 <Divider sx={{ margin: "2rem 0", width: "100%" }} />
                 {data.map((item) => {
                     return (
-                        <Box sx={{ width: "100%" }}>
+                        <Box sx={{ width: "100%", my: 1 }}>
                             <Typography
                                 sx={{
                                     float:
-                                        item.to === auth.user.address
+                                        item.to !== auth.user.address
                                             ? "right"
                                             : "left",
                                     backgroundColor:
-                                        item.to === auth.user.address
+                                        item.to !== auth.user.address
                                             ? "green"
                                             : "blue",
                                     textAlign:
-                                        item.to === auth.user.address
+                                        item.to !== auth.user.address
                                             ? "right"
                                             : "left",
                                     padding: "0.5rem 2.5rem",

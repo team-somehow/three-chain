@@ -31,6 +31,7 @@ import LogisticsLogin from "../screens/logistics/LogisticsLogin";
 import RegulatorLogin from "../screens/RegulatorLogin";
 import Chat from "../screens/Chat";
 import BuyerLogin from "../screens/buyer/BuyerLogin.jsx";
+import ValidateToken from "../screens/ValidateToken";
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
@@ -317,6 +318,10 @@ const router = createBrowserRouter([
     {
         path: "/Chat/:uid",
         element: <Chat />,
+    },
+    {
+        path: "validateToken",
+        element: <ValidateToken />,
     },
 ]);
 

@@ -5,7 +5,9 @@ import { Link, useParams } from "react-router-dom";
 function GetLoan() {
   const supplierId = useParams().id;
   const [isNo, setIsNo] = useState(false);
-
+  const requestButtonClick = () => {
+    console.log("Request Button Clicked");
+  };
   return (
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"} m={4}>
       <Typography variant="h4">Want Loan</Typography>
@@ -35,6 +37,7 @@ function GetLoan() {
           sx={{
             mt: 6,
           }}
+          onClick={requestButtonClick}
         >
           Request Manufacturer
         </Button>

@@ -19,7 +19,6 @@ function SelectManufacturer() {
             id={m.id}
             name={m.name}
             demandUnits={m.demandUnits}
-            url={"/supplier/getLoan/" + m.id}
           />
         );
       })}

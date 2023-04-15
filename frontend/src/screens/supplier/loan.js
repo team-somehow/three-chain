@@ -36,7 +36,7 @@ function Loan() {
             walletAddress: auth?.user?.address,
             totalAmount: totalAmount,
             loanStatus: "Requested",
-            manufacturerId: id,
+            manufacturerId: auth?.user?.address,
             tenure: selectedDuration,
         });
         await arcanaProvider.connect();

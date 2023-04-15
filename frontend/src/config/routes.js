@@ -12,6 +12,7 @@ import Loan from "../screens/supplier/loan";
 import SelectSupplier from "../screens/manufacturer/SelectSupplier";
 import ApproveLoans from "../screens/manufacturer/ApproveLoans";
 import SeeLoans from "../screens/supplier/SeeLoans";
+import MyBatches from "../screens/manufacturer/MyBatches";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
 				),
 				children: [
 					{
-						path: "home",
+						path: "",
 						element: <HomeMan />,
 					},
 					{
@@ -93,7 +94,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "batches",
-						element: <h1>My Batches</h1>,
+						element:  <MyBatches />,
 					},
 				],
 			},

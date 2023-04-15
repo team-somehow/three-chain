@@ -46,6 +46,7 @@ function MyCard(props) {
                     if (t.products[i].batchId === props.batchId) {
                         data = t.products;
                         data[i].regulatorVerification = false;
+                        data[i].currentLocation="Manufacturer"
                         docId = doc.id;
                     }
                 }

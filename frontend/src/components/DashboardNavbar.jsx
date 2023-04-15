@@ -69,11 +69,11 @@ const DashboardNavbar = (props) => {
                     </div>
 
                     <NavLink
-                        text={"Select Supplier"}
+                        text={"Approve Bid"}
                         icon={<HandshakeIcon />}
-                        onClickNavigateTo="/manufacturer/dash/selectSupplier"
+                        onClickNavigateTo="/manufacturer/dash/bidApproval"
                         isActive={
-                            currentRoute === "/manufacturer/dash/selectSupplier"
+                            currentRoute === "/manufacturer/dash/bidApproval"
                         }
                     />
                     <NavLink

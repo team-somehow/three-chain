@@ -21,133 +21,138 @@ import HomeLog from "../screens/logistics/HomeLog";
 import DetailsLog from "../screens/logistics/DetailsLog";
 import BuyerHome from "../screens/buyer/BuyerHome";
 import BuyerBid from "../screens/buyer/BuyerBid";
+import BidApproval from "../screens/manufacturer/BidApproval";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <h1>Home</h1>,
-  },
-  {
-    path: "/login",
-    element: <h1>Login </h1>,
-  },
-  {
-    path: "/supplier",
-    children: [
-      {
-        path: "/supplier/login",
-        element: <SupplierLogin />,
-      },
-      {
-        path: "/supplier/login",
-        element: <SupplierLogin />,
-      },
-      {
-        path: "/supplier/onboarding",
-        element: <Onboarding />,
-      },
-      {
-        path: "selectManufacturer",
-        element: <SelectManufacturer />,
-      },
-      // {
-      //   path: 'getLoan/:id',
-      //   element: <GetLoan />,
-      // },
-      {
-        path: "loan/:id",
-        element: <Loan />,
-      },
-      {
-        path: "repay/:id",
-        element: <RepayLoan />,
-      },
-      {
-        path: "/supplier/seeLoans",
-        element: <SeeLoans />,
-      },
-    ],
-  },
-  {
-    path: "manufacturer",
-    children: [
-      {
-        path: "onboarding",
-        element: <OnboardingMan />,
-      },
-      {
-        path: "dash",
+    {
+        path: "/",
+        element: <h1>Home</h1>,
+    },
+    {
+        path: "/login",
+        element: <h1>Login </h1>,
+    },
+    {
+        path: "/supplier",
+        children: [
+            {
+                path: "/supplier/login",
+                element: <SupplierLogin />,
+            },
+            {
+                path: "/supplier/login",
+                element: <SupplierLogin />,
+            },
+            {
+                path: "/supplier/onboarding",
+                element: <Onboarding />,
+            },
+            {
+                path: "selectManufacturer",
+                element: <SelectManufacturer />,
+            },
+            // {
+            //   path: 'getLoan/:id',
+            //   element: <GetLoan />,
+            // },
+            {
+                path: "loan/:id",
+                element: <Loan />,
+            },
+            {
+                path: "repay/:id",
+                element: <RepayLoan />,
+            },
+            {
+                path: "/supplier/seeLoans",
+                element: <SeeLoans />,
+            },
+        ],
+    },
+    {
+        path: "manufacturer",
+        children: [
+            {
+                path: "onboarding",
+                element: <OnboardingMan />,
+            },
+            {
+                path: "dash",
+                element: (
+                    <Box display={"flex"}>
+                        <DashboardNavbar />
+                        <Outlet />
+                    </Box>
+                ),
+                children: [
+                    {
+                        path: "",
+                        element: <HomeMan />,
+                    },
+                    {
+                        path: "approveLoan",
+                        element: <ApproveLoans />,
+                    },
+                    {
+                        path: "selectSupplier",
+                        element: <h1>Supplier Select</h1>,
+                    },
+                    {
+                        path: "createBatch",
+                        element: <CreateBatch />,
+                    },
+                    {
+                        path: "batches",
+                        element: <MyBatches />,
+                    },
+                    {
+                        path: "bidApproval",
+                        element: <BidApproval />,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        path: "/regulator",
+        element: <Regulator />,
+    },
+    {
+        path: "/buyer",
+        children: [
+            {
+                path: "",
+                element: <BuyerHome />,
+            },
+            {
+                path: "placeBid",
+                element: <BuyerBid />,
+            },
+        ],
+    },
+    {
+        path: "/logistics",
         element: (
-          <Box display={"flex"}>
-            <DashboardNavbar />
-            <Outlet />
-          </Box>
+            <Box display={"flex"}>
+                <LogisticsNavbar />
+                <Outlet />
+            </Box>
         ),
         children: [
-          {
-            path: "",
-            element: <HomeMan />,
-          },
-          {
-            path: "approveLoan",
-            element: <ApproveLoans />,
-          },
-          {
-            path: "selectSupplier",
-            element: <h1>Supplier Select</h1>,
-          },
-          {
-            path: "createBatch",
-            element: <CreateBatch />,
-          },
-          {
-            path: "batches",
-            element: <MyBatches />,
-          },
+            {
+                path: "",
+                element: <HomeLog />,
+            },
+            {
+                path: "details",
+                element: <DetailsLog />,
+            },
         ],
-      },
-    ],
-  },
-  {
-    path: "/regulator",
-    element: <Regulator />,
-  },
-  {
-    path: "/buyer",
-    children: [
-      {
-        path: "",
-        element: <BuyerHome />,
-      },
-      {
-        path: "placeBid",
-        element: <BuyerBid />,
-      },
-    ],
-  },
-  {
-    path: "/logistics",
-    element: (
-      <Box display={"flex"}>
-        <LogisticsNavbar />
-        <Outlet />
-      </Box>
-    ),
-    children: [
-      {
-        path: "",
-        element: <HomeLog />,
-      },
-      {
-        path: "details",
-        element: <DetailsLog />,
-      },
-    ],
-  },
+    },
 ]);
 
 export default router;

@@ -50,13 +50,6 @@ contract ProductNFT is ERC721A{
         batchData[batchId].verification=true;
     }
 
-    // function escrowStart(uint256 batchId) public payable  {
-    //     require(batchData[batchId].verification,"Need to be verified!");
-    //     batchData[batchId].currentPrice=msg.value;
-    //     escrowProcess[batchId]=true;
-    //     escrowRecevier[batchId]=msg.sender;
-    // }
-
     function escrowBid(uint256 batchId) public payable {
         batchIdToBid[batchId].push(Bid(msg.sender, msg.value, false));
         escrowProcess[batchId]=true;
@@ -95,6 +88,7 @@ contract ProductNFT is ERC721A{
     function getOwner(uint256 batchId) public view returns (address){
         return batchData[batchId].owner;
     }
+
     function checkAuthentication(uint256 batchId) public view returns(Batch memory){
         return batchData[batchId];
     }

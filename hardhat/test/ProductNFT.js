@@ -7,6 +7,7 @@ describe("ProductNFT", function () {
   let bidder1;
   let bidder2;
   let seller;
+  let regulator;
 
   const quantity = 10;
   const name = "Test Batch";
@@ -20,12 +21,14 @@ describe("ProductNFT", function () {
     await contract.deployed();
 
     // get addresses of users
-    const [_owner, _bidder1, _bidder2, _seller] = await ethers.getSigners();
+    const [_owner, _bidder1, _bidder2, _seller, _regulator] =
+      await ethers.getSigners();
 
     owner = _owner;
     bidder1 = _bidder1;
     bidder2 = _bidder2;
     seller = _seller;
+    regulator = _regulator;
   });
 
   it("should mint a batch of NFTs", async () => {
@@ -48,8 +51,7 @@ describe("ProductNFT", function () {
   });
 
   it("should set verification to true", async function () {
-    await contract.connect(seller).batchMint(quantity, name, batchUid);
-    await contract.connect(seller).regulatorApproval(batchUid);
+    await contract.connect(regulator).regulatorApproval(batchUid);
 
     const batchData = await contract.getBatchData(batchUid);
     expect(batchData.verification).to.equal(true);

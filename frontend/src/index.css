@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  background: url("./../public/main-laptop-bg.svg") no-repeat center
+  background: url("./../public/Gradient-bg.png") no-repeat center
     center/cover !important;
   color: #1f4e5f !important;
   overflow: auto;

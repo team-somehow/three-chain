@@ -86,14 +86,19 @@ function Onboarding() {
                         height: "70vh",
                     }}
                 >
-                    <Typography variant="h4" mb={10} textAlign="center" fontWeight='600'>
+                    <Typography
+                        variant="h4"
+                        mb={10}
+                        textAlign="center"
+                        fontWeight="600"
+                    >
                         Kindly fill in the below details
                     </Typography>
                     <Box
                         component={"form"}
                         display={"flex"}
                         flexDirection={"column"}
-                        width={'80%'}
+                        width={"80%"}
                     >
                         {/* <input
                         onChange={(e) => setImage(e.target.files)}
@@ -114,7 +119,7 @@ function Onboarding() {
                             icon={<CloudUploadIcon />}
                             text={"Upload Aadhar Photo"}
                             onClick={() => imageUploadRef.current.click()}
-                            styles={{marginBottom : '1.5rem'}}
+                            styles={{ marginBottom: "1.5rem" }}
                         />
                         <Dropdown
                             label={"What do you sell?"}
@@ -125,7 +130,7 @@ function Onboarding() {
                         <WeightInput
                             inputValue={sellingUnits}
                             setInputValue={setSetSellingUnits}
-                            styles={{margin: '2rem'}}
+                            styles={{ marginTop: "2rem" }}
                         />
                         {/* <Button
               variant="contained"
@@ -141,7 +146,7 @@ function Onboarding() {
                             onPress={() => {
                                 onSubmit();
                             }}
-                            styles={{margin: '2rem'}}
+                            styles={{ margin: "2rem" }}
                         />
                     </Box>
                 </Box>

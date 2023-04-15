@@ -19,7 +19,7 @@ function Onboarding() {
   const [selectedSellingProduct, setSelectedSellingProduct] = useState(
     sellingProducts[0]
   );
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
   const imageUploadRef = useRef();
   useEffect(() => {
     console.log(image);

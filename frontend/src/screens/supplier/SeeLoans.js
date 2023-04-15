@@ -4,6 +4,9 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
 import { Link } from "react-router-dom";
+import CustomCard from "../../components/CustomCard";
+import CustomButton from "../../components/CustomButton";
+import CheckIcon from "@mui/icons-material/Check";
 
 const SeeLoans = () => {
   const auth = useAuth();
@@ -27,43 +30,66 @@ const SeeLoans = () => {
 
   return (
     <Box m={2}>
-      <Typography variant="h4">My Loans</Typography>
+      <Typography mb={2} variant="h4">
+        My Loans
+      </Typography>
       {data.map((item) => {
         return (
-          <Box
-            component={Paper}
-            sx={{
-              p: 2,
-              m: 2,
-            }}
-          >
-            <Typography variant="body1">Loan Id- {item.id}</Typography>
-            <Typography>Amount- {item.amount}</Typography>
-            <Typography>Payable Amount- {item.totalAmount}</Typography>
-            <Typography>Manufacturer ID- {item.manufacturerId}</Typography>
-            <Button
-              variant="contained"
-              color={
-                item.loanStatus === "Approved" || item.loanStatus === "Paid"
-                  ? "success"
-                  : "primary"
-              }
-            >
-              {item.loanStatus}
-            </Button>
-            {item.loanStatus === "Approved" && (
-              <Link to={"/supplier/repay/" + item.id}>
+          <Box mb={2}>
+            <CustomCard>
+              <Box>
+                <Typography variant="body1">
+                  Loan Id- <Typography fontWeight={"700"}>{item.id}</Typography>
+                </Typography>
+                <Typography>
+                  Amount-{" "}
+                  <Typography fontWeight={"700"}>{item.amount}</Typography>
+                </Typography>
+                <Typography></Typography>
+                  Payable Amount-{" "}
+                  <Typography fontWeight={"700"}>{item.totalAmount}</Typography>
+                </Typography>
+                <Typography>
+                  Manufacturer ID-{" "}
+                  <Typography fontWeight={"700"}>
+                    {item.manufacturerId}
+                  </Typography>
+                </Typography>
                 <Button
-                  sx={{
-                    ml: 2,
-                  }}
                   variant="contained"
-                  color="primary"
+                  sx={{
+                    borderRadius: "16px",
+                  }}
+                  color={
+                    item.loanStatus === "Approved" || item.loanStatus === "Paid"
+                      ? "success"
+                      : "primary"
+                  }
                 >
-                  Repay Loan
+                  {item.loanStatus === "Paid" && <CheckIcon />}
+                  {item.loanStatus}
                 </Button>
-              </Link>
-            )}
+                {item.loanStatus === "Approved" && (
+                  <Link
+                    to={"/supplier/repay/" + item.id}
+                    style={{
+                      marginLeft: "10px",
+                    }}
+                  >
+                    {/* <Button
+                      sx={{
+                        ml: 2,
+                      }}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Repay Loan
+                    </Button> */}
+                    <CustomButton text={"Repay Loan"} onPress={() => {}} />
+                  </Link>
+                )}
+              </Box>
+            </CustomCard>
           </Box>
         );
       })}

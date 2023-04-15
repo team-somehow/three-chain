@@ -139,10 +139,10 @@ const router = createBrowserRouter([
     {
         path: "/buyer",
         children: [
-          {
-            path: "login",
-            element: <BuyerLogin />,
-          }
+            {
+                path: "login",
+                element: <BuyerLogin />,
+            },
             {
                 path: "",
                 element: <BuyerHome />,

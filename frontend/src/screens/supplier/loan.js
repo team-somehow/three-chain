@@ -27,7 +27,7 @@ function Loan() {
     const [loanAmount, setLoanAmount] = useState(0);
     const [totalAmount, setTotalAmount] = useState(0);
     const auth = useAuth();
-    const { manuId } = useParams();
+    const { id } = useParams();
 
     const RequestLoan = async () => {
         if (!auth.user) return;
@@ -39,7 +39,7 @@ function Loan() {
             walletAddress: auth?.user?.address,
             totalAmount: totalAmount,
             loanStatus: "Requested",
-            manufacturerId: manuId,
+            manufacturerId: id,
             tenure: selectedDuration,
         });
         await arcanaProvider.connect();

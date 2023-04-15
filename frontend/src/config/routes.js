@@ -1,5 +1,7 @@
 import { Box } from "@mui/system";
 import { createBrowserRouter, Outlet } from "react-router-dom";
+import Onboarding from "../screens/supplier/onboarding";
+
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/supplier/onboarding",
-        element: <h1>Onboarding</h1>,
+        element: <Onboarding />,
       },
       {
         path: "/supplier/selectManufacturer",

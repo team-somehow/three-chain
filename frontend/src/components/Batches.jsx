@@ -19,14 +19,19 @@ function MyCard(props) {
         console.log("Loan Approved");
     }
 
-    const steps = ["Transactor", "Wholesaler", "Retailer"];
+    const steps = ["Manufacturer", "Regulator", "Logistics", "Buyer"];
 
     const trackStatus = ["In Transit", "On Shelf", "Customer"];
-
+    const status = () => {
+        if (props.currentLocation === "Manufacturer") return 0;
+        else if (props.currentLocation === "Regulator") return 1;
+        else if (props.currentLocation === "Logistic") return 2;
+        else return 3;
+    };
     function MyStepper() {
         return (
             <Box sx={{ width: "100%", p: 3 }}>
-                <Stepper activeStep={2} alternativeLabel>
+                <Stepper activeStep={status()} alternativeLabel>
                     {steps.map((label) => (
                         <Step key={label}>
                             <StepLabel>{label}</StepLabel>

@@ -10,7 +10,7 @@ function GetLoan() {
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"} m={4}>
       <Typography variant="h4">Want Loan</Typography>
       <Link
-        to={"/loan/" + supplierId}
+        to={"/supplier/loan/" + supplierId}
         style={{
           width: "100%",
         }}

@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import Onboarding from "../screens/supplier/onboarding";
 import SelectManufacturer from "../screens/supplier/selectManufacturer";
 import GetLoan from "../screens/supplier/getLoan";
+import Loan from "../screens/supplier/loan";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
         element: <GetLoan />,
       },
       {
-        path: "loan",
-        element: <h1>Supplier Login </h1>,
+        path: "loan/:id",
+        element: <Loan />,
       },
     ],
   },

@@ -61,7 +61,7 @@ function CreateBatch() {
 	}
 
 	return (
-		<div style={{ height: "100%", width: "100%" }}>
+		<div style={{ height: "100%", width: "100%" , paddingLeft: 20}}>
 			<Typography variant="h4" style={{ margin: "1rem 0" }}>
 				Create Batch
 			</Typography>

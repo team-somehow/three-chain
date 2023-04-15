@@ -15,7 +15,7 @@ const Home = ({ text, icon, onClickNavigateTo, isActive }) => {
 			<ListItemButton
 				style={{
 					background: isActive
-						? "linear-gradient(166.88deg, #54A3FF 9.45%, #348FF9 227.32%)"
+						? "#79A8A9"
 						: "inherit",
 					color: isActive ? "white" : "inherit",
 					borderRadius: "12px",

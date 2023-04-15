@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Dropdown from "../../components/Dropdown";
 import WeightInput from "../../components/WeightInput";
@@ -19,10 +19,14 @@ function Onboarding() {
   const [selectedSellingProduct, setSelectedSellingProduct] = useState(
     sellingProducts[0]
   );
+  const [image, setImage] = useState();
+  const imageUploadRef = useRef();
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
 
   const onSubmit = async () => {
     setLoading(true);
-
     const data = {
       name: "Rajesh",
       phone: "1234567890",
@@ -30,7 +34,6 @@ function Onboarding() {
       address: "123, ABC Street, XYZ City, 123456",
       crop: selectedSellingProduct,
     };
-
     await addDoc(collection(db, "suppliers"), data);
     setLoading(false);
   };
@@ -41,10 +44,17 @@ function Onboarding() {
         Onboarding
       </Typography>
       <form>
+        <input
+          onChange={(e) => setImage(e.target.files)}
+          ref={imageUploadRef}
+          type="file"
+          style={{ display: "none" }}
+        />
         <Button
           variant="contained"
           size="large"
           startIcon={<CloudUploadIcon />}
+          onClick={() => imageUploadRef.current.click()}
           fullWidth
         >
           Upload Aadhar photo

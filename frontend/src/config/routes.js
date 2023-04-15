@@ -43,10 +43,10 @@ const router = createBrowserRouter([
         path: "selectManufacturer",
         element: <SelectManufacturer />,
       },
-      {
-        path: "getLoan/:id",
-        element: <GetLoan />,
-      },
+      // {
+      //   path: "getLoan/:id",
+      //   element: <GetLoan />,
+      // },
       {
         path: "loan/:id",
         element: <Loan />,

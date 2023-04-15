@@ -7,6 +7,7 @@ import Center from "./components/utils/Center";
 import router from "./config/routes";
 // import { SnackbarProvider } from "notistack";
 import StyleThemeProvider from "./theme/ThemeProvider";
+import React from "react";
 
 function App() {
   const [loading, setLoading] = useState(false);

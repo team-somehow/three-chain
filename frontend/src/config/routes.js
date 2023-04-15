@@ -1,5 +1,10 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Onboarding from "../screens/supplier/onboarding";
+import OnboardingMan from "../screens/manufacturer/OnboardingMan";
+import HomeMan from "../screens/manufacturer/HomeMan";
+import { Box } from "@mui/material";
+import DashboardNavbar from "../components/DashboardNavbar";
+import SupplierLogin from "../screens/supplier/SupplierLogin";
 import SelectManufacturer from "../screens/supplier/selectManufacturer";
 import GetLoan from "../screens/supplier/getLoan";
 import Loan from "../screens/supplier/loan";
@@ -11,21 +16,25 @@ import Loan from "../screens/supplier/loan";
 const router = createBrowserRouter([
   {
     path: "/",
-    exact: true,
     element: <h1>Home</h1>,
-    // errorElement: <ErrorPage />,
   },
   {
     path: "/login",
-    exact: true,
     element: <h1>Login </h1>,
   },
   {
     path: "/supplier",
-    exact: true,
     children: [
       {
-        path: "onboarding",
+        path: "/supplier/login",
+        element: <SupplierLogin />,
+      },
+      {
+        path: "/supplier/login",
+        element: <SupplierLogin />,
+      },
+      {
+        path: "/supplier/onboarding",
         element: <Onboarding />,
       },
       {
@@ -39,6 +48,47 @@ const router = createBrowserRouter([
       {
         path: "loan/:id",
         element: <Loan />,
+      },
+    ],
+  },
+  {
+    path: "manufacturer",
+    exact: true,
+    children: [
+      {
+        path: "onboarding",
+        element: <OnboardingMan />,
+      },
+      {
+        path: "dash",
+        element: (
+          <Box display={"flex"}>
+            <DashboardNavbar />
+            <Outlet />
+          </Box>
+        ),
+        children: [
+          {
+            path: "home",
+            element: <HomeMan />,
+          },
+          {
+            path: "approveLoan",
+            element: <h1>Approve Loan</h1>,
+          },
+          {
+            path: "selectSupplier",
+            element: <h1>Supplier Select</h1>,
+          },
+          {
+            path: "creatBatch",
+            element: <h1>Supplier Select</h1>,
+          },
+          {
+            path: "batches",
+            element: <h1>My Batches</h1>,
+          },
+        ],
       },
     ],
   },

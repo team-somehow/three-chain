@@ -18,6 +18,7 @@ import { arcanaProvider } from "../index";
 import { LoanContractAddress } from "../constants/constants";
 import LoanAbi from "../artifacts/contracts/Loan.sol/Loan.json";
 import { Contract, ethers, providers } from "ethers";
+import CustomCard from "./CustomCard";
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -31,7 +32,6 @@ const ExpandMore = styled((props) => {
 }));
 
 function MyCard(props) {
-    console.log(props);
     const provider = new providers.Web3Provider(arcanaProvider.provider);
     const signer = provider.getSigner();
     const contract = new Contract(LoanContractAddress, LoanAbi.abi, signer);
@@ -59,52 +59,61 @@ function MyCard(props) {
     }, [props]);
 
     return (
-        <Card sx={{ width: 600, marginBottom: 2, p: 2 }}>
-            <Box
-                display={"flex"}
-                justifyContent={"space-between"}
-                alignItems={"center"}
-            >
-                <Typography variant="h5">{props.name}</Typography>
-                <Button>Details</Button>
-            </Box>
-            <Divider
-                sx={{
-                    my: 1,
-                }}
-            />
-            <Box display={"flex"} alignItems={"center"}>
-                <Typography mr={4} fontSize={"large"} color="text.secondary">
-                    Tenure : {props.tenure}
-                </Typography>
-                <Typography fontSize={"large"} color="text.secondary">
-                    Interest : {props.interest}
-                </Typography>
-            </Box>
+        <CustomCard
+            styles={{
+                marginBottom: "20px",
+            }}
+        >
+            <Box sx={{ width: 600 }}>
+                <Box
+                    display={"flex"}
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                >
+                    <Typography variant="h5">{props.name}</Typography>
+                    <Button>Details</Button>
+                </Box>
+                <Divider
+                    sx={{
+                        my: 1,
+                    }}
+                />
+                <Box display={"flex"} alignItems={"center"}>
+                    <Typography
+                        mr={4}
+                        fontSize={"large"}
+                        color="text.secondary"
+                    >
+                        Tenure : {props.tenure}
+                    </Typography>
+                    <Typography fontSize={"large"} color="text.secondary">
+                        Interest : {props.interest}
+                    </Typography>
+                </Box>
 
-            <Divider
-                sx={{
-                    my: 1,
-                    mb: 2,
-                }}
-            />
-            <Link to={`/chat/${props.manufacturerId}`}>
-                <Button aria-label="add to favorites" variant="contained">
-                    <ChatIcon />
-                    <Typography ml={1}>Chat</Typography>
+                <Divider
+                    sx={{
+                        my: 1,
+                        mb: 2,
+                    }}
+                />
+                <Link to={`/chat/${props.manufacturerId}`}>
+                    <Button aria-label="add to favorites" variant="contained">
+                        <ChatIcon />
+                        <Typography ml={1}>Chat</Typography>
+                    </Button>
+                </Link>
+                <Button
+                    aria-label="share"
+                    onClick={loanApprove}
+                    variant="contained"
+                    color="success"
+                    sx={{ ml: 1 }}
+                >
+                    <CheckCircleIcon />
+                    <Typography ml={1}>Approve Loan</Typography>
                 </Button>
-            </Link>
-            <Button
-                aria-label="share"
-                onClick={loanApprove}
-                variant="contained"
-                color="success"
-                sx={{ ml: 1 }}
-            >
-                <CheckCircleIcon />
-                <Typography ml={1}>Approve Loan</Typography>
-            </Button>
-            {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
+                {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
 					<Typography paragraph>Details:</Typography>
 					<Typography paragraph>Product : {product}</Typography>
@@ -113,7 +122,8 @@ function MyCard(props) {
 					<Typography>Request : {request}</Typography>
 				</CardContent>
 			</Collapse> */}
-        </Card>
+            </Box>
+        </CustomCard>
     );
 }
 

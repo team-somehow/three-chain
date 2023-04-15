@@ -3,10 +3,31 @@ import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "../../config/firebase";
 
+import ProductNFT from "../../artifacts/contracts/ProductNFT.sol/ProductNFT.json";
+import { providers, Contract, ethers } from "ethers";
+import { arcanaProvider } from "../..";
+import { ProductNFTContractAddress } from "../../constants/constants";
+import { useAuth } from "@arcana/auth-react";
+import { useNavigate } from "react-router";
+
 const BuyerTrackItem = (props) => {
-    // console.log(props);
+    const provider = new providers.Web3Provider(arcanaProvider.provider);
+    // get the end user
+    const signer = provider.getSigner();
+    // get the smart contract
+    const contract = new Contract(
+        ProductNFTContractAddress,
+        ProductNFT.abi,
+        signer
+    );
+
+    const auth = useAuth();
+
+    const navigate = useNavigate();
 
     const itemReached = async () => {
+        if (!auth.user) return;
+
         const snapshot = await getDocs(collection(db, "Manufacturer"));
         let docId = "";
         let newData = [];
@@ -27,14 +48,34 @@ const BuyerTrackItem = (props) => {
                 }
             }
         });
-		
+
         await updateDoc(doc(db, "Manufacturer", docId), {
             products: newData,
         });
         console.log("true");
-    };
 
-    if (props?.itemReached) {
+        try {
+            await arcanaProvider.connect();
+            await contract.escrowEndBuyer(props.batchId);
+            // navigate(0);
+        } catch (error) {
+            console.log(error);
+        }
+
+        navigate(0);
+    };
+    console.log(props.itemReached);
+
+    if (props.itemReached && props.itemInTransit) {
+        return (
+            <Box component={Paper}>
+                <Typography>{props.productName}</Typography>
+                <Typography>Drop waiting for confirmation</Typography>
+            </Box>
+        );
+    }
+
+    if (props.itemReached) {
         return (
             <Box component={Paper}>
                 <Typography>{props.productName}</Typography>
@@ -42,7 +83,6 @@ const BuyerTrackItem = (props) => {
             </Box>
         );
     }
-
     if (props.itemInTransit) {
         return (
             <Box

@@ -10,6 +10,7 @@ body {
   overflow: auto;
   overflow-x: hidden;
   min-height: 100vh;
+  background-attachment: fixed !important;
 }
 
 code {

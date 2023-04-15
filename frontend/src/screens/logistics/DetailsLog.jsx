@@ -43,7 +43,10 @@ function DetailsLog() {
             snapshot.forEach((doc) => {
                 let t = doc.data();
                 for (let i = 0; i < t.products?.length; i++) {
-                    if (t.products[i].itemInTransit === true) {
+                    if (
+                        t.products[i].itemInTransit === true &&
+                        t.products[i].logistic === false
+                    ) {
                         tData.push(t.products[i]);
                     }
                 }

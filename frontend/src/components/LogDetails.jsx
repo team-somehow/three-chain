@@ -15,7 +15,25 @@ import TextField from "@mui/material/TextField";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 
+import ProductNFT from "../artifacts/contracts/ProductNFT.sol/ProductNFT.json";
+import { providers, Contract, ethers } from "ethers";
+import { arcanaProvider } from "..";
+import { ProductNFTContractAddress } from "../constants/constants";
+import { useAuth } from "@arcana/auth-react";
+
 function LogDetails(props) {
+    const provider = new providers.Web3Provider(arcanaProvider.provider);
+    // get the end user
+    const signer = provider.getSigner();
+    // get the smart contract
+    const contract = new Contract(
+        ProductNFTContractAddress,
+        ProductNFT.abi,
+        signer
+    );
+
+    const auth = useAuth();
+
     function pickupOrder() {
         console.log("pickup order");
     }
@@ -40,6 +58,8 @@ function LogDetails(props) {
         );
     }
     const onOrderDelivered = async () => {
+        if (!auth.user) return;
+
         const snapshot = await getDocs(collection(db, "Manufacturer"));
         let docId = "";
         let newData = [];
@@ -55,6 +75,13 @@ function LogDetails(props) {
                 }
             }
         });
+
+        try {
+            await arcanaProvider.connect();
+            await contract.escrowEndLogistics(props.batchId);
+        } catch (error) {
+            console.log(error);
+        }
 
         await updateDoc(doc(db, "Manufacturer", docId), {
             products: newData,

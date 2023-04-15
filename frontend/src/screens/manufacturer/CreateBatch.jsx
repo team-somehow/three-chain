@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { Typography, Card, TextField, Button } from '@mui/material';
+import React, { useState } from "react";
+import { Typography, Card, TextField, Button } from "@mui/material";
+import { db } from "../../config/firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 function CreateBatch() {
   const [batch, setBatch] = useState({
-    name: '',
-    quantity: '',
-    price: '',
-    warehouse: '',
+    name: "",
+    quantity: "",
+    price: "",
+    warehouse: "",
   });
 
   function handleChange(e) {
@@ -19,29 +21,30 @@ function CreateBatch() {
     });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     console.log(batch);
     setBatch({
-        name: '',
-        quantity: '',
-        price: '',
-        warehouse: '',
-    })
+      name: "",
+      quantity: "",
+      price: "",
+      warehouse: "",
+    });
+    await addDoc(collection(db, "Batches"), batch);
   }
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
-      <Typography variant="h4" style={{ margin: '1rem 0' }}>
+    <div style={{ height: "100%", width: "100%" }}>
+      <Typography variant="h4" style={{ margin: "1rem 0" }}>
         Create Batch
       </Typography>
       <Card
         sx={{
-          width: '90%',
-          height: '100%',
-          marginTop: '3rem',
-          padding: '1rem',
-          display: 'flex',
-          flexDirection: 'column',
+          width: "90%",
+          height: "100%",
+          marginTop: "3rem",
+          padding: "1rem",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <TextField

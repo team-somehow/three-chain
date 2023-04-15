@@ -14,6 +14,10 @@ import { Link } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuth } from "@arcana/auth-react";
+import { arcanaProvider } from "../index";
+import { LoanContractAddress } from "../constants/constants";
+import LoanAbi from "../artifacts/contracts/Loan.sol/Loan.json";
+import { Contract, ethers, providers } from "ethers";
 
 const ExpandMore = styled((props) => {
 	const { expand, ...other } = props;
@@ -27,6 +31,9 @@ const ExpandMore = styled((props) => {
 }));
 
 function MyCard(props) {
+	const provider = new providers.Web3Provider(arcanaProvider.provider);
+	const signer = provider.getSigner();
+	const contract = new Contract(LoanContractAddress, LoanAbi.abi, signer);
 	const [expanded, setExpanded] = React.useState(false);
 	const auth = useAuth();
 	const handleExpandClick = () => {
@@ -38,9 +45,18 @@ function MyCard(props) {
 			repayWalletAddress: auth?.user?.address,
 			loanStatus: "Approved",
 		});
+		await arcanaProvider.connect();
+		let num = 0.05;
+		await contract.giveLoan({
+			value: ethers.utils.parseEther(num.toString()),
+		});
+
 		console.log("Loan Approved");
 	}
-	
+	useEffect(() => {
+		console.log(props);
+	}, [props]);
+
 	return (
 		<Card sx={{ width: 600, marginBottom: 2 }}>
 			<CardHeader title={props.name} />

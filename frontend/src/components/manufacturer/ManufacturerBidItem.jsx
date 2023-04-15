@@ -119,7 +119,12 @@ const ManufacturerBidItem = (props) => {
                                     width: "100%",
                                 }}
                             >
-                                <ListItemText primary={item.name} />
+                                <ListItemText
+                                    sx={{
+                                        ml: 2,
+                                    }}
+                                    primary={item.name}
+                                />
 
                                 {/* variant="contained" onClick=
                                     {() => chooseBid(index)} */}

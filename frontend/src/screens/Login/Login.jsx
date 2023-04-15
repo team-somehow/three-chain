@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../../components/Dropdown";
 import CustomCard from "../../components/CustomCard";
+import LanguageDropdown from "../../components/languageDropdown";
 const loginLinks = [
     {
         text: "Supplier Login",
@@ -44,6 +45,13 @@ function Login() {
             <Typography variant="h4" align="center">
                 {"Three Chain"}
             </Typography>
+
+            <Dropdown
+                label={t("Select Langauge")}
+                options={["English", t("Hindi")]}
+                inputValue={selectedLang}
+                setInputValue={setSelectedLang}
+            />
             <CustomCard
                 styles={{
                     marginTop: "1rem",
@@ -62,12 +70,6 @@ function Login() {
                         }}
                     />
                 ))}
-                <Dropdown
-                    label={t("Select Langauge")}
-                    options={["English", t("Hindi")]}
-                    inputValue={selectedLang}
-                    setInputValue={setSelectedLang}
-                />
             </CustomCard>
         </Box>
     );

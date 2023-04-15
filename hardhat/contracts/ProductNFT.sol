@@ -21,6 +21,9 @@ contract ProductNFT is ERC721A{
     mapping(uint256=>address) escrowRecevier;
     mapping(uint256 =>address) escrowSender;
 
+    mapping (uint256=>bool) hasBuyerApproved;
+    mapping (uint256=>bool) hasLogisticsApproved;
+
 
     struct Bid {
         address bidder;
@@ -76,12 +79,33 @@ contract ProductNFT is ERC721A{
         }
     }
 
-    function escrowEnd(uint256 batchId) public  {
-        Batch memory data= batchData[batchId];
-        payable(escrowSender[batchId]).transfer(data.currentPrice);
-        batchData[batchId].owner=escrowRecevier[batchId];
-        for (uint i = data.startTokenId; i < data.endTokenId; i++) {
-            safeTransferFrom(escrowSender[batchId],escrowRecevier[batchId],i);
+    function escrowEndBuyer(uint256 batchId) public  {
+        require(escrowProcess[batchId] ,"Need the escrow process to start!");
+
+        hasBuyerApproved[batchId]=true;
+
+        if (hasLogisticsApproved[batchId]){
+            Batch memory data= batchData[batchId];
+            payable(escrowSender[batchId]).transfer(data.currentPrice);
+            batchData[batchId].owner=escrowRecevier[batchId];
+            for (uint i = data.startTokenId; i < data.endTokenId; i++) {
+                safeTransferFrom(escrowSender[batchId],escrowRecevier[batchId],i);
+            }
+        }
+    }
+
+    function escrowEndLogistics(uint256 batchId) public  {
+        require(escrowProcess[batchId] ,"Need the escrow process to start!");
+
+        hasLogisticsApproved[batchId]=true;
+
+        if (hasBuyerApproved[batchId]){
+            Batch memory data= batchData[batchId];
+            payable(escrowSender[batchId]).transfer(data.currentPrice);
+            batchData[batchId].owner=escrowRecevier[batchId];
+            for (uint i = data.startTokenId; i < data.endTokenId; i++) {
+                safeTransferFrom(escrowSender[batchId],escrowRecevier[batchId],i);
+            }
         }
     }
     

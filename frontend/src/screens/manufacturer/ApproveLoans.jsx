@@ -59,7 +59,11 @@ function ApproveLoans() {
     }, [auth]);
 
     return (
-        <div>
+        <div
+            style={{
+                paddingLeft: 20,
+            }}
+        >
             <Typography
                 variant="h4"
                 component="h4"

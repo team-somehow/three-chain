@@ -47,7 +47,7 @@ const DashboardNavbar = (props) => {
           >
             <ListItem onClick={() => navigate("/manufacturer/dash")}>
               <ListItemText>
-                <h2>Dashboard</h2>
+                <h1 className="text-[#1f4e5f] font-black text-2xl">Manufacturer Dashboard</h1>
               </ListItemText>
             </ListItem>
           </div>

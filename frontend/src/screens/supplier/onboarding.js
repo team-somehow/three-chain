@@ -114,7 +114,7 @@ function Onboarding() {
                             icon={<CloudUploadIcon />}
                             text={"Upload Aadhar Photo"}
                             onClick={() => imageUploadRef.current.click()}
-                            styles={{marginBottom : '1rem'}}
+                            styles={{marginBottom : '1.5rem'}}
                         />
                         <Dropdown
                             label={"What do you sell?"}
@@ -125,7 +125,7 @@ function Onboarding() {
                         <WeightInput
                             inputValue={sellingUnits}
                             setInputValue={setSetSellingUnits}
-                            styles={{margin: '1.5rem 0'}}
+                            styles={{margin: '2rem'}}
                         />
                         {/* <Button
               variant="contained"
@@ -141,6 +141,7 @@ function Onboarding() {
                             onPress={() => {
                                 onSubmit();
                             }}
+                            styles={{margin: '2rem'}}
                         />
                     </Box>
                 </Box>

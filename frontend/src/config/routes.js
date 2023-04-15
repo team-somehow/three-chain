@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Onboarding from "../screens/supplier/onboarding";
 import SupplierLogin from "../screens/supplier/SupplierLogin";
+import SelectManufacturer from "../screens/supplier/selectManufacturer";
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -28,15 +29,15 @@ const router = createBrowserRouter([
         element: <Onboarding />,
       },
       {
-        path: "/supplier/selectManufacturer",
-        element: <h1>Select Manufacturer</h1>,
+        path: "selectManufacturer",
+        element: <SelectManufacturer />,
       },
       {
-        path: "/supplier/getLoan",
+        path: "getLoan",
         element: <h1>Get Loan</h1>,
       },
       {
-        path: "/supplier/loan",
+        path: "loan",
         element: <h1>Supplier Login </h1>,
       },
     ],

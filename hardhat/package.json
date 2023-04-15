@@ -7,6 +7,7 @@
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
     "dotenv": "^16.0.3",
     "erc721a": "^4.2.3",
-    "hardhat": "^2.13.1"
+    "hardhat": "^2.13.1",
+    "prettier-plugin-solidity": "^1.1.3"
   }
 }

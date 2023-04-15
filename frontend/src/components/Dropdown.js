@@ -3,9 +3,14 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const options = ["Wheat", "Sugarcane", "Rice", "Cotton", "Maize", "Soybean"];
-export default function Dropdown({ options = options }) {
+export default function Dropdown({
+  options = options,
+  label,
+  inputValue,
+  setInputValue,
+}) {
   const [value, setValue] = React.useState(options[0]);
-  const [inputValue, setInputValue] = React.useState("");
+  // const [inputValue, setInputValue] = React.useState("");
 
   return (
     <div>
@@ -22,7 +27,7 @@ export default function Dropdown({ options = options }) {
         id="controllable-states-demo"
         options={options}
         sx={{ width: "100%" }}
-        renderInput={(params) => <TextField {...params} label="Controllable" />}
+        renderInput={(params) => <TextField {...params} label={label} />}
       />
     </div>
   );

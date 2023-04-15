@@ -27,7 +27,7 @@ function SelectManufacturer() {
                 title={t("Select Manufacturer")}
                 onBackUrl={"/supplier/home"}
             />
-            <Box m={2}>
+            <Box sx={{margin : '2rem 1rem'}}>
                 {mList.map((m) => {
                     return (
                         <ManufacturerCard

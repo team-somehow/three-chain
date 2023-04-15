@@ -12,6 +12,7 @@ import { LoanContractAddress } from "../../constants/constants";
 import LoanAbi from "../../artifacts/contracts/Loan.sol/Loan.json";
 import CustomCard from "../../components/CustomCard";
 import CustomButton from "../../components/CustomButton";
+import CurrencyRupeeRoundedIcon from '@mui/icons-material/CurrencyRupeeRounded';
 import CustomAppBar from "../../components/AppBar";
 
 function Loan() {
@@ -54,48 +55,42 @@ function Loan() {
         setTotalAmount(A);
     }, [loanAmount, interest, selectedDuration]);
 
-    return (
-        <>
-            <CustomAppBar
-                title={"Request with Loan"}
-                onBackUrl={"/supplier/selectManufacturer"}
-            />
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh",
-                    p: 4,
-                }}
-            >
-                <CustomCard>
-                    <Typography mt={3} variant="h4">
-                        Request with Loan
-                    </Typography>
-                    <form>
-                        <RuppeInput
-                            input={loanAmount}
-                            setInput={setLoanAmount}
-                        />
-                        <Dropdown
-                            label={"Duration(in Months) "}
-                            options={durationOptions}
-                            inputValue={selectedDuration}
-                            setInputValue={setSelectedDuration}
-                        />
-                        <Divider
-                            sx={{
-                                my: 2,
-                            }}
-                        />
-                        <Typography variant="h5">
-                            Interest: {interest}%
-                        </Typography>
-                        <Typography variant="h5">
-                            Total Amount: {totalAmount.toFixed(2)}
-                        </Typography>
-                        {/* <Button
+  return (
+    <>
+    < Typography variant="h4" textAlign='center' fontWeight='600' sx={{marginTop : '1rem'}}>
+      Request Loan
+    </Typography>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "90vh",
+        p: 2,
+      }}
+    >
+      <CustomCard >
+        <Typography mt={2} variant="h4" fontWeight='500' textAlign='center'>
+          Loan Details
+        </Typography>
+        <form style={{marginTop : '1rem'}}>
+          <RuppeInput input={loanAmount} setInput={setLoanAmount} />
+          <Dropdown
+            label={"Duration(in Months) "}
+            options={durationOptions}
+            inputValue={selectedDuration}
+            setInputValue={setSelectedDuration}
+          />
+          <Divider
+            sx={{
+              my: 3,
+            }}
+          />
+          <Typography variant="h5" fontWeight='600'>Interest: {interest}%</Typography>
+          <Typography variant="h5" fontWeight='600'>
+            Total Amount: {totalAmount.toFixed(2)}
+          </Typography>
+          {/* <Button
           variant="contained"
           sx={{
             mt: 4,
@@ -107,7 +102,8 @@ function Loan() {
                         <Box
                             sx={{
                                 mt: 2,
-                                display: "flex",
+                                mb: 1,
+              display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
                             }}
@@ -115,13 +111,15 @@ function Loan() {
                             <CustomButton
                                 text={"Request Manufacturer"}
                                 onPress={() => RequestLoan()}
-                            />
+                              icon={<CurrencyRupeeRoundedIcon sx={{marginRight: '0.5rem'}} />}
+            />
                         </Box>
                     </form>
                 </CustomCard>
             </Box>
         </>
-    );
+      </>
+  );
 }
 
 export default Loan;

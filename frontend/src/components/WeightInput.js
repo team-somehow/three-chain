@@ -9,9 +9,10 @@ function WeightInput({
   placeholder = "Enter Units",
   inputValue,
   setInputValue,
+  styles
 }) {
   return (
-    <FormControl sx={{ my: 1, width: "100%" }} variant="outlined">
+    <FormControl sx={{ my: 1, width: "100%" }} variant="outlined" style={styles}>
       <OutlinedInput
         placeholder={placeholder}
         id="outlined-adornment-weight"

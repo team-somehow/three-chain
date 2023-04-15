@@ -3,27 +3,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CustomCard from "./CustomCard";
 import CustomButton from "./CustomButton";
-import { useTranslation } from "react-i18next";
+import ChatIcon from '@mui/icons-material/Chat';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 function ManufacturerCard({ id, name, demandUnits }) {
-    const { t, i18n } = useTranslation();
     return (
         <CustomCard>
-            <Box
-                sx={{
-                    p: 2,
-                }}
-            >
+            <Box>
                 {/* <Typography >Manufacturer {id}</Typography> */}
-                <Typography variant="h5">
-                    {t("Name")}: {name}
+                <Typography variant="h5" fontWeight="600">
+                    Name: {name}
                 </Typography>
-                <Typography>
-                    {t("Demand Units")}: {demandUnits} kg
-                </Typography>
+                <Typography className="py-3" fontWeight='500' variant="h6">Demand Units: {demandUnits} kg</Typography>
                 <Link to={"/chat/" + id}>
-                    <CustomButton text={t("Chat")} onPress={() => {}} />
-                    {/* <Button variant="contained">Chat</Button> */}
+                    <CustomButton text={"Chat"} onPress={() => { } } icon={<ChatIcon sx={{ marginRight: '0.5rem' }} />} btnProps={undefined} styles={undefined} typographyVariant={undefined} />
                 </Link>
                 <Link
                     to={"/supplier/loan/" + id}
@@ -39,11 +32,11 @@ function ManufacturerCard({ id, name, demandUnits }) {
           >
             Get Loan
           </Button> */}
-                    <CustomButton text={t("Get Loan")} onPress={() => {}} />
-                </Link>
-            </Box>
-        </CustomCard>
-    );
+          <CustomButton text={"Get Loan"} onPress={() => {}} />
+        </Link>
+      </Box>
+    </CustomCard>
+  );
 }
 
 export default ManufacturerCard;

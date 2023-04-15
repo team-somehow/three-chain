@@ -7,13 +7,14 @@ const CustomButton = ({
   styles,
   typographyVariant,
   text,
+  icon
 }) => {
   return (
     <Button
       onClick={() => onPress()}
       variant="contained"
       sx={{
-        borderRadius: "16px",
+        borderRadius: "0.5rem",
         backgroundColor: "#2B6E70",
         "&:hover": {
           backgroundColor: "#FFF",
@@ -23,6 +24,7 @@ const CustomButton = ({
       }}
       {...btnProps}
     >
+      {icon}
       <Typography
         variant={typographyVariant || "body1"}
         sx={{

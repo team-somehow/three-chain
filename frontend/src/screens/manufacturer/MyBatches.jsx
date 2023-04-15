@@ -19,7 +19,7 @@ const suppliers = [
 
 function MyBatches() {
   return (
-    <div>
+    <div style={{paddingLeft : 20}}>
       <Typography variant="h4" component="h4" style={{ margin: '1rem 0' }}>
         My Batches
       </Typography>

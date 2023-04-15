@@ -12,6 +12,7 @@ import { LoanContractAddress } from "../../constants/constants";
 import LoanAbi from "../../artifacts/contracts/Loan.sol/Loan.json";
 import CustomCard from "../../components/CustomCard";
 import CustomButton from "../../components/CustomButton";
+import CurrencyRupeeRoundedIcon from '@mui/icons-material/CurrencyRupeeRounded';
 
 function Loan() {
   const provider = new providers.Web3Provider(arcanaProvider.provider);
@@ -52,20 +53,24 @@ function Loan() {
   }, [loanAmount, interest, selectedDuration]);
 
   return (
+    <>
+    < Typography variant="h4" textAlign='center' fontWeight='600' sx={{marginTop : '1rem'}}>
+      Request Loan
+    </Typography>
     <Box
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        p: 4,
+        height: "90vh",
+        p: 2,
       }}
     >
-      <CustomCard>
-        <Typography mt={3} variant="h4">
-          Request with Loan
+      <CustomCard >
+        <Typography mt={2} variant="h4" fontWeight='500' textAlign='center'>
+          Loan Details
         </Typography>
-        <form>
+        <form style={{marginTop : '1rem'}}>
           <RuppeInput input={loanAmount} setInput={setLoanAmount} />
           <Dropdown
             label={"Duration(in Months) "}
@@ -75,11 +80,11 @@ function Loan() {
           />
           <Divider
             sx={{
-              my: 2,
+              my: 3,
             }}
           />
-          <Typography variant="h5">Interest: {interest}%</Typography>
-          <Typography variant="h5">
+          <Typography variant="h5" fontWeight='600'>Interest: {interest}%</Typography>
+          <Typography variant="h5" fontWeight='600'>
             Total Amount: {totalAmount.toFixed(2)}
           </Typography>
           {/* <Button
@@ -94,6 +99,7 @@ function Loan() {
           <Box
             sx={{
               mt: 2,
+              mb: 1,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -102,11 +108,13 @@ function Loan() {
             <CustomButton
               text={"Request Manufacturer"}
               onPress={() => RequestLoan()}
+              icon={<CurrencyRupeeRoundedIcon sx={{marginRight: '0.5rem'}} />}
             />
           </Box>
         </form>
       </CustomCard>
     </Box>
+    </>
   );
 }
 

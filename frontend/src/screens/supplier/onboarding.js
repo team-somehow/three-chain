@@ -50,43 +50,52 @@ function Onboarding() {
     };
 
     return (
-        <Box
-            width={"100%"}
-            height={"100vh"}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
-        >
+        <>
+            <h1 className="text-center text-4xl pt-6 font-black text-white">
+                Lets Onboard you!
+            </h1>
             <Box
-                sx={{
-                    background: `url('${CardBg}') no-repeat center center !important`,
-                    backdropFilter: "blur(6px)",
-                    borderRadius: "15px",
-                    padding: "1rem",
-                    margin: "1rem",
-                    overflow: "hidden",
-                    position: "relative",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    width: "100%",
-                }}
+                width={"100%"}
+                height={"90vh"}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
             >
-                <Typography variant="h4" mb={10}>
-                    Onboarding
-                </Typography>
                 <Box
-                    component={"form"}
-                    display={"flex"}
-                    flexDirection={"column"}
+                    sx={{
+                        background:
+                            "linear-gradient(131.68deg, rgba(255, 255, 255, 0.75) -3%, rgba(255, 255, 255, 0.75) 113.86%)",
+                        boxShadow:
+                            "0px 4.66667px 4.66667px rgba(0, 0, 0, 0.25)",
+                        backdropFilter: "blur(5.83333px)",
+                        borderRadius: "15px",
+                        padding: "1rem",
+                        margin: "1rem",
+                        overflow: "hidden",
+                        position: "relative",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        width: "100%",
+                        height: "70vh",
+                    }}
                 >
-                    {/* <input
+                    <Typography variant="h4" mb={10} textAlign="center" fontWeight='600'>
+                        Kindly fill in the below details
+                    </Typography>
+                    <Box
+                        component={"form"}
+                        display={"flex"}
+                        flexDirection={"column"}
+                        width={'80%'}
+                    >
+                        {/* <input
                         onChange={(e) => setImage(e.target.files)}
                         ref={imageUploadRef}
                         type="file"
                         style={{ display: "none" }}
                     /> */}
-                    {/* <Button
+                        {/* <Button
           variant="contained"
           size="large"
           startIcon={<CloudUploadIcon />}
@@ -95,23 +104,24 @@ function Onboarding() {
         >
           Upload Aadhar photo
         </Button> */}
-                    <SuperButton
-                        icon={<CloudUploadIcon />}
-                        text={"Upload Aadhar Photo"}
-                        onClick={() => imageUploadRef.current.click()}
-                        styles={{}}
-                    />
-                    <Dropdown
-                        label={"What do you sell?"}
-                        setInputValue={setSelectedSellingProduct}
-                        inputValue={selectedSellingProduct}
-                        options={sellingProducts}
-                    />
-                    <WeightInput
-                        inputValue={sellingUnits}
-                        setInputValue={setSetSellingUnits}
-                    />
-                    {/* <Button
+                        <SuperButton
+                            icon={<CloudUploadIcon />}
+                            text={"Upload Aadhar Photo"}
+                            onClick={() => imageUploadRef.current.click()}
+                            styles={{marginBottom : '1rem'}}
+                        />
+                        <Dropdown
+                            label={"What do you sell?"}
+                            setInputValue={setSelectedSellingProduct}
+                            inputValue={selectedSellingProduct}
+                            options={sellingProducts}
+                        />
+                        <WeightInput
+                            inputValue={sellingUnits}
+                            setInputValue={setSetSellingUnits}
+                            styles={{margin: '1.5rem 0'}}
+                        />
+                        {/* <Button
               variant="contained"
               fullWidth
               onClick={() => {
@@ -120,15 +130,16 @@ function Onboarding() {
             >
               Submit
             </Button> */}
-                    <CustomButton
-                        text={"Submit"}
-                        onPress={() => {
-                            onSubmit();
-                        }}
-                    />
+                        <CustomButton
+                            text={"Submit"}
+                            onPress={() => {
+                                onSubmit();
+                            }}
+                        />
+                    </Box>
                 </Box>
             </Box>
-        </Box>
+        </>
     );
 }
 

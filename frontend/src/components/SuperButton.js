@@ -12,7 +12,7 @@ function SuperButton({ text, onClick = () => {}, icon, styles }) {
         boxShadow: "0px 4.66667px 4.66667px rgba(0, 0, 0, 0.25)",
         backdropFilter: "blur(5.83333px)",
         borderRadius: "14px",
-        width: "fit-content",
+        width: "100%",
         height: "fit-content",
         ...styles,
       }}
@@ -23,6 +23,7 @@ function SuperButton({ text, onClick = () => {}, icon, styles }) {
         startIcon={icon}
         sx={{
           background: "#FFFFFF",
+          width: '100%',
           boxShadow: "0px 4.66667px 4.66667px rgba(0, 0, 0, 0.25)",
           backdropFilter: "blur(5.83333px)",
           borderRadius: "10px",

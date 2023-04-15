@@ -6,19 +6,19 @@ import { useNavigate } from "react-router-dom";
 function CustomAppBar({ title, onBackUrl }) {
     const navigate = useNavigate();
     return (
-        <Box position="static">
+        <Box position="static" sx={{bgcolor : '#1f4e5f', py: 1}}>
             <Toolbar>
                 <IconButton
                     size="large"
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2 , color : 'white'}}
                     onClick={() => navigate(onBackUrl)}
                 >
                     <ArrowBackIcon />
                 </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h5" component="div" sx={{ flexGrow: 1 }} fontWeight="700" className="text-white">
                     {title}
                 </Typography>
             </Toolbar>

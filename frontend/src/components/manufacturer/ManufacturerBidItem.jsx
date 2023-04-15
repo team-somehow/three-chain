@@ -1,3 +1,4 @@
+import { useAuth } from "@arcana/auth-react";
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import React from "react";
@@ -5,7 +6,7 @@ import { db } from "../../config/firebase";
 
 const ManufacturerBidItem = (props) => {
 	// console.log(props);
-
+	const auth = useAuth();
 	const chooseBid = async (index) => {
 		let winnerAddress = "";
 		const snapshot = await getDocs(collection(db, "Manufacturer"));
@@ -22,6 +23,10 @@ const ManufacturerBidItem = (props) => {
 					newData = t.products;
 					winnerAddress = data.bids[index].walletAddress;
 					newData[i].bids = [];
+					newData[i].itemInTransit = true;
+					newData[i].logistic = false;
+					newData[i].buyer = false;
+					newData[i].buyerWalletAddress = auth.user.address;
 				}
 			}
 		});
@@ -49,7 +54,7 @@ const ManufacturerBidItem = (props) => {
 					m: 2,
 				}}
 			>
-				{props.bids.map((item, index) => {
+				{props.bids?.map((item, index) => {
 					return (
 						<Box
 							component={Paper}

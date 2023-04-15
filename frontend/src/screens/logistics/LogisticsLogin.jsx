@@ -5,7 +5,7 @@ function LogisticsLogin() {
     return (
         <Login
             heading={"Three Chain Logistics"}
-            onLoginNavigateTo={"/logistics/onboarding"}
+            onLoginNavigateTo={"/logistics"}
         />
     );
 }

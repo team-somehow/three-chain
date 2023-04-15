@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
+import CustomCard from "./CustomCard";
 
 function MyCard(props) {
     function loanApprove() {
@@ -43,8 +44,13 @@ function MyCard(props) {
     }
 
     return (
-        <Card sx={{ width: 600, marginBottom: 2 }}>
-            <CardHeader title={props.productName} subheader={props.batchId} />
+        <CustomCard styles={{ width: "60%", marginBottom: "1rem" }}>
+            <Typography variant="h5" fontWeight="600">
+                {props.productName}
+            </Typography>
+            <Typography variant="h6" fontWeight="500">
+                {props.batchId}
+            </Typography>
             <CardContent>
                 <Typography variant="body1" color="text.secondary">
                     Quantity : {props.quantity}
@@ -68,7 +74,7 @@ function MyCard(props) {
                     {props.regulatorVerification.toString()}
                 </Typography>
             </CardContent>
-        </Card>
+        </CustomCard>
     );
 }
 

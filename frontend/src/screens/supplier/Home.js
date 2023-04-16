@@ -1,10 +1,11 @@
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CustomButton from "../../components/CustomButton";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../../components/Dropdown";
 import LanguageDropdown from "../../components/languageDropdown";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 
 function Home() {
     const navigate = useNavigate();
@@ -28,10 +29,22 @@ function Home() {
                 width="100%"
             >
                 <Typography variant="h4">{t("Home")}</Typography>
-                <LanguageDropdown
-                    isActive={isActive}
-                    setIsActive={setIsActive}
-                />
+                <Box display={"flex"} alignItems={"center"}>
+                    <Link
+                        to="/chatbot"
+                        sx={{
+                            mr: 1,
+                        }}
+                    >
+                        <IconButton>
+                            <ChatBubbleIcon />
+                        </IconButton>
+                    </Link>
+                    <LanguageDropdown
+                        isActive={isActive}
+                        setIsActive={setIsActive}
+                    />
+                </Box>
             </Box>
             <Box width={"100%"}>
                 <CustomButton

@@ -1,8 +1,11 @@
-import React from "react";
-import { createBrowserRouter } from "react-router-dom";
-import Onboarding from "../screens/supplier/onboarding";
-import SupplierLogin from "../screens/supplier/SupplierLogin";
-import SelectManufacturer from "../screens/supplier/selectManufacturer";
+import { createBrowserRouter, Outlet } from 'react-router-dom';
+import Onboarding from '../screens/supplier/onboarding';
+import OnboardingMan from '../screens/manufacturer/OnboardingMan';
+import HomeMan from '../screens/manufacturer/HomeMan';
+import { Box } from '@mui/material';
+import DashboardNavbar from '../components/DashboardNavbar';
+import SupplierLogin from '../screens/supplier/SupplierLogin';
+import SelectManufacturer from '../screens/supplier/selectManufacturer';
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -10,35 +13,80 @@ import SelectManufacturer from "../screens/supplier/selectManufacturer";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <h1>Home</h1>,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <h1>Login </h1>,
   },
   {
-    path: "/supplier",
+    path: '/supplier',
     children: [
       {
         path: "/supplier/login",
         element: <SupplierLogin />,
       },
       {
-        path: "/supplier/onboarding",
+        path: "/supplier/login",
+        element: <SupplierLogin />,
+      },
+      {
+        path: '/supplier/onboarding',
         element: <Onboarding />,
       },
       {
-        path: "selectManufacturer",
+        path: 'selectManufacturer',
         element: <SelectManufacturer />,
       },
       {
-        path: "getLoan",
+        path: 'getLoan',
         element: <h1>Get Loan</h1>,
       },
       {
-        path: "loan",
+        path: 'loan',
         element: <h1>Supplier Login </h1>,
+      },
+    ],
+  },
+  {
+    path: 'manufacturer',
+    exact: true,
+    children: [
+      {
+        path: 'onboarding',
+        element: <OnboardingMan />,
+      },
+      {
+        path: 'dash',
+        element: (
+          <Box display={'flex'}>
+            <DashboardNavbar />
+            <Outlet />
+          </Box>
+        ),
+        children: [
+          {
+            path: 'home',
+            element: <HomeMan />,
+          },
+          {
+            path: 'approveLoan',
+            element: <h1>Approve Loan</h1>,
+          },
+          {
+            path: 'selectSupplier',
+            element: <h1>Supplier Select</h1>,
+          },
+          {
+            path: 'creatBatch',
+            element: <h1>Supplier Select</h1>,
+          },
+          {
+            path: 'batches',
+            element: <h1>My Batches</h1>,
+          },
+        ],
       },
     ],
   },

@@ -30,7 +30,7 @@ const ValidateToken = () => {
         snapshot.forEach((item) => {
             let t = item.data();
             // console.log(t);
-            for (let i = 0; i < t.products.length; i++) {
+            for (let i = 0; i < t?.products?.length; i++) {
                 if (t.products[i].batchId.toString() == tokenId) {
                     console.log(t.products[i].batchId, tokenId);
                     setData(t.products[i]);
@@ -93,7 +93,9 @@ const ValidateToken = () => {
                     <Step key={"Buyer"}>
                         <StepLabel>{"Buyer"}</StepLabel>
                         <Typography>{data.buyerDT}</Typography>
-                        <Typography>{sha256(data.batchId)}</Typography>
+                        {status() == 3 && (
+                            <Typography>{sha256(data.batchId)}</Typography>
+                        )}
                     </Step>
                 </Stepper>
             </Box>

@@ -57,12 +57,10 @@ const BuyerDashboardNavbar = (props) => {
                             alignItems: "center",
                         }}
                     >
-                        <ListItem
-                            onClick={() => navigate("/manufacturer/dash")}
-                        >
+                        <ListItem onClick={() => navigate("/buyer/dash")}>
                             <ListItemText>
                                 <h1 className="text-[#1f4e5f] font-black text-xl">
-                                    Manufacturer Dashboard
+                                    Buyer Dashboard
                                 </h1>
                             </ListItemText>
                         </ListItem>

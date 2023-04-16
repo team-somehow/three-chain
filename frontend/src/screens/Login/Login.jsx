@@ -30,28 +30,36 @@ const loginLinks = [
 ];
 function Login() {
     const navigate = useNavigate();
-    const [selectedLang, setSelectedLang] = useState("English");
+    // const [selectedLang, setSelectedLang] = useState("English");
+    const [isActive, setIsActive] = useState(false);
+
     const { t, i18n } = useTranslation();
     // const changeLang = () => {
     //     console.log(selectedLang);
     //     i18n.changeLanguage(selectedLang === "English" ? "en" : "hi");
     // };
-    useEffect(() => {
-        i18n.changeLanguage(selectedLang === "English" ? "en" : "hi");
-    }, [selectedLang]);
 
     return (
         <Box sx={{ m: 2 }}>
-            <Typography variant="h4" align="center">
-                {"Three Chain"}
-            </Typography>
-
-            <Dropdown
+            <Box
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+            >
+                <Typography variant="h4" align="center">
+                    {"Three Chain"}
+                </Typography>
+                <LanguageDropdown
+                    isActive={isActive}
+                    setIsActive={setIsActive}
+                />
+            </Box>
+            {/* <Dropdown
                 label={t("Select Langauge")}
                 options={["English", t("Hindi")]}
                 inputValue={selectedLang}
                 setInputValue={setSelectedLang}
-            />
+            /> */}
             <CustomCard
                 styles={{
                     marginTop: "1rem",

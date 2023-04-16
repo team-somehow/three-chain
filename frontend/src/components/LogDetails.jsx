@@ -20,6 +20,7 @@ import { providers, Contract, ethers } from "ethers";
 import { arcanaProvider } from "..";
 import { ProductNFTContractAddress } from "../constants/constants";
 import { useAuth } from "@arcana/auth-react";
+import CustomCard from "./CustomCard";
 
 function LogDetails(props) {
     const provider = new providers.Web3Provider(arcanaProvider.provider);
@@ -42,12 +43,19 @@ function LogDetails(props) {
         console.log("deliver order");
     }
 
-    const steps = ["Order Accept", "Pickup", "Out for Delivery"];
+    const steps = ["Manufacturer", "Regulator", "Logistics", "Buyer"];
 
+    const trackStatus = ["In Transit", "On Shelf", "Customer"];
+    const status = () => {
+        if (props.currentLocation === "Manufacturer") return 0;
+        else if (props.currentLocation === "Regulator") return 1;
+        else if (props.currentLocation === "Logistic") return 2;
+        else return 3;
+    };
     function MyStepper() {
         return (
             <Box sx={{ width: "100%", p: 3 }}>
-                <Stepper activeStep={0} alternativeLabel>
+                <Stepper activeStep={status()} alternativeLabel>
                     {steps.map((label) => (
                         <Step key={label}>
                             <StepLabel>{label}</StepLabel>
@@ -90,22 +98,34 @@ function LogDetails(props) {
     };
 
     return (
-        <Card sx={{ width: 600, marginBottom: 2 }}>
-            <CardHeader title={props.productName} subheader={props.batchId} />
+        <CustomCard styles={{ width: 600, marginBottom: 2 }}>
+            {/* <CardHeader title={props.productName} subheader={props.batchId} /> */}
             <CardContent>
-                <TextField
-                    disabled
-                    id="outlined-disabled"
-                    label="From"
-                    defaultValue={"Mumbai"}
-                    sx={{ marginRight: "2rem" }}
-                />
-                <TextField
-                    disabled
-                    id="outlined-disabled"
-                    label="To"
-                    defaultValue={"Goa"}
-                />
+                <Typography variant="h4">Name- {props.productName}</Typography>
+                <Typography variant="body1">
+                    Batch ID- {props.batchId}
+                </Typography>
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        my: 2,
+                    }}
+                >
+                    <TextField
+                        disabled
+                        id="outlined-disabled"
+                        label="From"
+                        defaultValue={"Mumbai"}
+                        sx={{ marginRight: "2rem" }}
+                    />
+                    <TextField
+                        disabled
+                        id="outlined-disabled"
+                        label="To"
+                        defaultValue={"Goa"}
+                    />
+                </Box>
                 <Typography
                     variant="h6"
                     color="text.secondary"
@@ -121,16 +141,6 @@ function LogDetails(props) {
             <CardActions disableSpacing>
                 <Button
                     aria-label="share"
-                    onClick={pickupOrder}
-                    variant="contained"
-                    color="success"
-                    sx={{ ml: 1 }}
-                    // disabled={ === 0 ? false : true}
-                >
-                    <ArrowUpwardIcon /> Pickup Order
-                </Button>
-                <Button
-                    aria-label="share"
                     onClick={deliverOrder}
                     variant="contained"
                     // color="success"
@@ -141,7 +151,7 @@ function LogDetails(props) {
                     <CheckCircleIcon /> Order Delivered
                 </Button>
             </CardActions>
-        </Card>
+        </CustomCard>
     );
 }
 

@@ -36,8 +36,14 @@ const BuyerTrack = () => {
     return (
         <Box display={"flex"}>
             <BuyerDashboardNavbar />
-            <Box m={2}>
-                <Typography>Track your orders</Typography>
+            <Box
+                sx={{
+                    p: 5,
+                    width: "100%",
+                }}
+            >
+                <Typography variant="h4">Track Batches</Typography>
+
                 {data.map((item) => {
                     return <BuyerTrackItem {...item} />;
                 })}

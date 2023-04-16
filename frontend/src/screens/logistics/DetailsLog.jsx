@@ -58,17 +58,24 @@ function DetailsLog() {
     }, [auth]);
 
     return (
-        <Box>
+        <Box
+            sx={{
+                p: 5,
+                width: "100%",
+            }}
+        >
             <Typography
                 variant="h4"
                 component="h4"
-                style={{ margin: "1rem 0" }}
+                // style={{ margin: "1rem 0" }}
             >
                 Get Details
             </Typography>
-            {data.map((e) => {
-                return <LogDetails {...e} />;
-            })}
+            <Box my={4}>
+                {data.map((e) => {
+                    return <LogDetails {...e} />;
+                })}
+            </Box>
         </Box>
     );
 }

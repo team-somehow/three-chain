@@ -5,7 +5,7 @@ import Dropdown from "../../components/Dropdown";
 import { useAuth } from "@arcana/auth-react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { providers, Contract, ethers } from "ethers";
 import { arcanaProvider } from "../..";
 import { LoanContractAddress } from "../../constants/constants";
@@ -28,7 +28,7 @@ function Loan() {
     const [totalAmount, setTotalAmount] = useState(0);
     const auth = useAuth();
     const { id } = useParams();
-
+    const navigate = useNavigate();
     const RequestLoan = async () => {
         if (!auth.user) return;
 
@@ -49,6 +49,7 @@ function Loan() {
             selectedDuration
         );
         console.log("Done");
+        navigate("/supplier/seeLoans");
     };
     useEffect(() => {
         console.log(auth?.user?.address);

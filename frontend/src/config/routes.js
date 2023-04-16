@@ -32,6 +32,7 @@ import RegulatorLogin from "../screens/RegulatorLogin";
 import Chat from "../screens/Chat";
 import BuyerLogin from "../screens/buyer/BuyerLogin.jsx";
 import ValidateToken from "../screens/ValidateToken";
+import CustomerLogin from "../screens/customer/CustomerLogin";
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
@@ -322,6 +323,15 @@ const router = createBrowserRouter([
     {
         path: "validateToken",
         element: <ValidateToken />,
+    },
+    {
+        path: "customer",
+        children: [
+            {
+                path: "login",
+                element: <CustomerLogin />,
+            },
+        ],
     },
 ]);
 

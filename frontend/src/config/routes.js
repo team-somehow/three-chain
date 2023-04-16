@@ -33,6 +33,7 @@ import Chat from "../screens/Chat";
 import BuyerLogin from "../screens/buyer/BuyerLogin.jsx";
 import ValidateToken from "../screens/ValidateToken";
 import CustomerLogin from "../screens/customer/CustomerLogin";
+import Chatbot from "../screens/Chatbot";
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
 // import ErrorPage from "../screens/ErrorPage";
@@ -332,6 +333,10 @@ const router = createBrowserRouter([
                 element: <CustomerLogin />,
             },
         ],
+    },
+    {
+        path: "chatbot",
+        element: <Chatbot />,
     },
 ]);
 

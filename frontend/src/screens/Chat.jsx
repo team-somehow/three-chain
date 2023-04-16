@@ -9,6 +9,7 @@ import CustomCard from "../components/CustomCard";
 import CustomButton from "../components/CustomButton";
 import SendIcon from "@mui/icons-material/Send";
 import Divider from "@mui/material/Divider";
+import CustomAppBar from "../components/AppBar";
 
 const Chat = () => {
     const { uid } = useParams();
@@ -41,78 +42,96 @@ const Chat = () => {
 
     const address = "0x37ED61F8CD09261Aea1622af723Ce01Da9e93471";
     return (
-        <Center>
-            <CustomCard
-                styles={{
-                    width: "75%",
-                    height: "90%",
-                    boxShadow:
-                        "12px 12px 80px #a6a6a6, -12px -12px 80px #ffffff",
+        <Box width={"100%"} height={"100vh"}>
+            <CustomAppBar
+                onBackUrl={"/supplier/selectManufacturer"}
+                title={"Chat"}
+            />
+            <Box
+                sx={{
+                    height: "calc(100vh - 100px)",
+                    width: "100%",
                     display: "flex",
-                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
                 }}
             >
-                <Typography variant="h6" fontWeight="600" textAlign="center">
-                    Chat
-                </Typography>
-                <Divider sx={{ margin: "2rem 0", width: "100%" }} />
-                {data.map((item) => {
-                    return (
-                        <Box sx={{ width: "100%", my: 1 }}>
-                            <Typography
-                                sx={{
-                                    float:
-                                        item.to !== auth.user.address
-                                            ? "right"
-                                            : "left",
-                                    backgroundColor:
-                                        item.to !== auth.user.address
-                                            ? "green"
-                                            : "blue",
-                                    textAlign:
-                                        item.to !== auth.user.address
-                                            ? "right"
-                                            : "left",
-                                    padding: "0.5rem 2.5rem",
-                                    borderRadius: "2rem",
-                                    color: "white",
-                                    fontWeight: "500",
-                                }}
-                            >
-                                {item.content}
-                            </Typography>
-                        </Box>
-                    );
-                })}
-                <Box
-                    sx={{
-                        position: "absolute",
-                        bottom: "0",
-                        marginBottom: "1rem",
-                        width: "90%",
+                <CustomCard
+                    styles={{
+                        width: "80%",
+                        height: "80%",
+                        boxShadow:
+                            "12px 12px 80px #a6a6a6, -12px -12px 80px #ffffff",
                         display: "flex",
-                        alignItems: "center",
+                        flexDirection: "column",
                     }}
                 >
-                    <TextField
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Type here..."
-                        sx={{ width: "75%", height: "auto" }}
-                    />
-                    <CustomButton
-                        onPress={() => sendMessage()}
-                        text="Send"
-                        styles={{
-                            width: "30%",
-                            marginLeft: "0.5rem",
-                            height: "auto",
+                    <Typography
+                        variant="h6"
+                        fontWeight="600"
+                        textAlign="center"
+                    >
+                        Chat
+                    </Typography>
+                    <Divider sx={{ margin: "2rem 0", width: "100%" }} />
+                    {data.map((item) => {
+                        return (
+                            <Box sx={{ width: "100%", my: 1 }}>
+                                <Typography
+                                    sx={{
+                                        float:
+                                            item.to !== auth.user.address
+                                                ? "right"
+                                                : "left",
+                                        backgroundColor:
+                                            item.to !== auth.user.address
+                                                ? "green"
+                                                : "blue",
+                                        textAlign:
+                                            item.to !== auth.user.address
+                                                ? "right"
+                                                : "left",
+                                        padding: "0.5rem 2.5rem",
+                                        borderRadius: "2rem",
+                                        color: "white",
+                                        fontWeight: "500",
+                                    }}
+                                >
+                                    {item.content}
+                                </Typography>
+                            </Box>
+                        );
+                    })}
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            bottom: "0",
+                            marginBottom: "1rem",
+                            width: "90%",
+                            display: "flex",
+                            alignItems: "center",
                         }}
-                        icon={<SendIcon sx={{ marginRight: "0.5rem" }} />}
-                    />
-                </Box>
-            </CustomCard>
-        </Center>
+                    >
+                        <TextField
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder="Type here..."
+                            sx={{ width: "75%", height: "auto" }}
+                        />
+                        <CustomButton
+                            onPress={() => sendMessage()}
+                            text="Send"
+                            styles={{
+                                width: "30%",
+                                marginLeft: "0.5rem",
+                                height: "auto",
+                            }}
+                            icon={<SendIcon sx={{ marginRight: "0.5rem" }} />}
+                        />
+                    </Box>
+                </CustomCard>
+            </Box>
+        </Box>
     );
 };
 

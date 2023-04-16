@@ -31,6 +31,7 @@ function SelectManufacturer() {
                 {mList.map((m) => {
                     return (
                         <ManufacturerCard
+                            key={m.manufacturerId + m.name}
                             id={m.manufacturerId}
                             name={m.name}
                             demandUnits={m.demandUnits}

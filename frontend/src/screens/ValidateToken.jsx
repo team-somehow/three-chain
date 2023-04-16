@@ -79,22 +79,21 @@ const ValidateToken = () => {
                 >
                     <Step key={"Manufacturer"}>
                         <StepLabel>{"Manufacturer"}</StepLabel>
-                        <StepContent>{data.regulatorDT}</StepContent>
+                        <Typography>{data.regulatorDT}</Typography>
                         <Typography>{sha256(data.batchId)}</Typography>
                     </Step>
                     <Step key={"Regulator"}>
                         <StepLabel>{"Regulator"}</StepLabel>
-                        <StepContent>{data.manufacturerDT}</StepContent>
+                        <Typography>{data.manufacturerDT}</Typography>
                     </Step>
                     <Step key={"Logistics"}>
                         <StepLabel>{"Logistics"}</StepLabel>
-                        <StepContent>{data.logisticDT}</StepContent>
+                        <Typography>{data.logisticDT}</Typography>
                     </Step>
                     <Step key={"Buyer"}>
                         <StepLabel>{"Buyer"}</StepLabel>
                         <Typography>{sha256(data.batchId)}</Typography>
-                        <StepContent>{data.logisticDT}</StepContent>
-
+                        <Typography>{data.logisticDT}</Typography>
                     </Step>
                 </Stepper>
             </Box>

@@ -79,6 +79,7 @@ const BuyerBiddingItem = (props) => {
             console.log("yoooooo", data);
             await updateDoc(doc(db, "Manufacturer", docId), {
                 products: data,
+                
             });
         };
         await getData();

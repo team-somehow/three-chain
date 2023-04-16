@@ -60,6 +60,7 @@ const ManufacturerBidItem = (props) => {
                     newData[i].buyer = false;
                     newData[i].buyerWalletAddress = auth.user.address;
                     newData[i].logisticDT = new Date().toLocaleString();
+                    newData[i].currentLocation = "Logistic";
                 }
             }
         });

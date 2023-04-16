@@ -47,8 +47,8 @@ function MyCard(props) {
                     if (t.products[i].batchId === props.batchId) {
                         data = t.products;
                         data[i].regulatorVerification = false;
-                        data[i].currentLocation="Manufacturer"
-                        data[i].manufacturerDT=new Date().toLocaleString()
+                        data[i].currentLocation = "Manufacturer";
+                        data[i].manufacturerDT = new Date().toLocaleString();
                         docId = doc.id;
                     }
                 }
@@ -78,20 +78,23 @@ function MyCard(props) {
                     if (t.products[i].batchId === props.batchId) {
                         data = t.products;
                         data[i].regulatorVerification = true;
+                        data[i].currentLocation = "Manufacturer";
+                        data[i].manufacturerDT = new Date().toLocaleString();
                         docId = doc.id;
                     }
                 }
             });
+
+            console.log(data);
             await updateDoc(doc(db, "Manufacturer", docId), {
                 products: data,
             });
+            navigate(0);
         };
-        await getData();
-
-        navigate(0);
+        getData();
     };
     return (
-        <CustomCard styles={{ width: 600, margin: '1rem auto' }}>
+        <CustomCard styles={{ width: 600, margin: "1rem auto" }}>
             <CardHeader
                 title={props.productName}
                 subheader={`Batch ID: ${props.batchId}`}

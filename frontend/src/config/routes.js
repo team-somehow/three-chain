@@ -148,7 +148,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "",
-                element: <BuyerHome />,
+                element: <BuyerBid />,
             },
             {
                 path: "placeBid",

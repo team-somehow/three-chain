@@ -66,12 +66,12 @@ const BuyerDashboardNavbar = (props) => {
                         </ListItem>
                     </div>
 
-                    <NavLink
+                    {/* <NavLink
                         text={"Home"}
                         icon={<HandshakeIcon />}
                         onClickNavigateTo="/buyer"
                         isActive={currentRoute === "/buyer"}
-                    />
+                    /> */}
                     <NavLink
                         text={"Place Bid"}
                         icon={<ApartmentIcon />}

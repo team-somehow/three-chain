@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "erc721a/contracts/ERC721A.sol";
-import "@openzeppelin/contracts/payment/escrow/RefundEscrow.sol";
+import "openzeppelin-solidity/contracts/payment/escrow/RefundEscrow.sol";
 
 contract ProductNFT is ERC721A {
     constructor() ERC721A("ThreeChain", "THC") {}

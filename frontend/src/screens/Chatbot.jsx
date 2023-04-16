@@ -26,10 +26,12 @@ function Chatbot() {
             justifyContent={"center"}
             alignItems={"center"}
             my={4}
+            width={"100%"}
+            height={"100vh"}
         >
             <CustomCard
                 styles={{
-                    width: "80%",
+                    width: "86%",
                     height: "80%",
                     margin: "auto",
                 }}
@@ -37,7 +39,7 @@ function Chatbot() {
                 <Typography variant="h4" ml={2}>
                     Chatbot
                 </Typography>
-                <Box width={"100%"} p={1} height={"70vh"} overflow={"auto"}>
+                <Box width={"100%"} p={1} height={"60vh"} overflow={"auto"}>
                     <List>
                         {chats.map((chat) => (
                             <Message

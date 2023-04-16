@@ -48,6 +48,7 @@ function MyCard(props) {
                         data = t.products;
                         data[i].regulatorVerification = false;
                         data[i].currentLocation="Manufacturer"
+                        data[i].manufacturerDT=new Date().toLocaleString()
                         docId = doc.id;
                     }
                 }

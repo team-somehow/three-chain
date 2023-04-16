@@ -86,6 +86,7 @@ function CreateBatch() {
                 regulatorVerification: false,
                 batchId: batchUid,
                 currentLocation: "Regulator",
+                regulatorDT: new Date().toLocaleString(),
             }),
         });
         console.log("done");

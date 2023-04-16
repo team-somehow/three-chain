@@ -80,6 +80,7 @@ function LogDetails(props) {
                     newData[i].logistic = true;
                     newData[i].itemInTransit = !(true && props.buyer);
                     newData[i].itemReached = true;
+                    newData[i].buyerDT = new Date().toLocaleString();
                 }
             }
         });

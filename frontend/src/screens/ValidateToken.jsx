@@ -5,6 +5,10 @@ import {
     Divider,
     Modal,
     Paper,
+    Step,
+    StepContent,
+    StepLabel,
+    Stepper,
     TextField,
     Typography,
 } from "@mui/material";
@@ -13,6 +17,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../config/firebase";
 import { Html5Qrcode } from "html5-qrcode";
 import CustomCard from "../components/CustomCard";
+import sha256 from "sha256";
 
 const ValidateToken = () => {
     const [tokenId, setTokenId] = useState("");
@@ -55,6 +60,47 @@ const ValidateToken = () => {
         setTokenId(qrCodeMessage);
         setCheck(true);
     };
+
+    const steps = ["Manufacturer", "Regulator", "Logistics", "Buyer"];
+    const status = () => {
+        if (data.currentLocation === "Manufacturer") return 0;
+        else if (data.currentLocation === "Regulator") return 1;
+        else if (data.currentLocation === "Logistic") return 2;
+        else return 3;
+    };
+
+    function MyStepper() {
+        return (
+            <Box sx={{ width: "100%", p: 3 }}>
+                <Stepper
+                    activeStep={status()}
+                    // alternativeLabel
+                    orientation="vertical"
+                >
+                    <Step key={"Manufacturer"}>
+                        <StepLabel>{"Manufacturer"}</StepLabel>
+                        <StepContent>{data.regulatorDT}</StepContent>
+                        <Typography>{sha256(data.batchId)}</Typography>
+                    </Step>
+                    <Step key={"Regulator"}>
+                        <StepLabel>{"Regulator"}</StepLabel>
+                        <StepContent>{data.manufacturerDT}</StepContent>
+                    </Step>
+                    <Step key={"Logistics"}>
+                        <StepLabel>{"Logistics"}</StepLabel>
+                        <StepContent>{data.logisticDT}</StepContent>
+                    </Step>
+                    <Step key={"Buyer"}>
+                        <StepLabel>{"Buyer"}</StepLabel>
+                        <Typography>{sha256(data.batchId)}</Typography>
+                        <StepContent>{data.logisticDT}</StepContent>
+
+                    </Step>
+                </Stepper>
+            </Box>
+        );
+    }
+
     if (!check) {
         return (
             <Box
@@ -90,8 +136,8 @@ const ValidateToken = () => {
                     <Box
                         component={Paper}
                         sx={{
-                            width: "80vw",   
-                            p:4
+                            width: "80vw",
+                            p: 4,
                         }}
                     >
                         <Typography>Successfully Reported the Item</Typography>
@@ -125,6 +171,9 @@ const ValidateToken = () => {
                     <CustomCard>
                         <Typography variant="h5">Product BatchId</Typography>
                         <Typography> {data.batchId}</Typography>
+                    </CustomCard>
+                    <CustomCard>
+                        <MyStepper />
                     </CustomCard>
                     <Button
                         variant="contained"

@@ -40,6 +40,7 @@ const DashboardNavbar = (props) => {
                     alignItems={"center"}
                     justifyContent={"center"}
                     mb={2}
+                    onClick={() => navigate("/")}
                 >
                     <img src="/logo192.png" width={"60px"} />
                     <Typography variant="h5" ml={2}>

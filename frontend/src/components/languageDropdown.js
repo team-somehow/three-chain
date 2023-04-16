@@ -23,10 +23,10 @@ function LanguageDropdown({ isActive, setIsActive }) {
             <Menu
                 id="menu-appbar"
                 open={isActive}
-                anchorEl={{
-                    vertical: "top",
-                    horizontal: "left",
-                }}
+                // anchorEl={{
+                //     vertical: "top",
+                //     horizontal: "left",
+                // }}
                 anchorOrigin={{
                     vertical: "top",
                     horizontal: "right",

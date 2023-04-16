@@ -27,6 +27,10 @@ const loginLinks = [
         text: "Regulator  Login",
         url: "/regulator/login",
     },
+    {
+        text: "Customer  Login",
+        url: "/customer/login",
+    },
 ];
 function Login() {
     const navigate = useNavigate();

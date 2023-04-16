@@ -90,7 +90,7 @@ const ValidateToken = () => {
                     <Box
                         component={Paper}
                         sx={{
-                            width: "80vw",
+                            width: "80vw",   
                             p:4
                         }}
                     >

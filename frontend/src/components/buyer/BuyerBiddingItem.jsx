@@ -1,5 +1,12 @@
 import { useAuth } from "@arcana/auth-react";
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+import {
+    Box,
+    Button,
+    Divider,
+    Paper,
+    TextField,
+    Typography,
+} from "@mui/material";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "../../config/firebase";
@@ -9,6 +16,7 @@ import { providers, Contract, ethers } from "ethers";
 import { arcanaProvider } from "../..";
 import { ProductNFTContractAddress } from "../../constants/constants";
 import ProductNFTAbi from "../../artifacts/contracts/ProductNFT.sol/ProductNFT.json";
+import CustomCard from "../CustomCard";
 
 const BuyerBiddingItem = (props) => {
     const provider = new providers.Web3Provider(arcanaProvider.provider);
@@ -78,29 +86,52 @@ const BuyerBiddingItem = (props) => {
         navigate(0);
     };
     return (
-        <Box
-            component={Paper}
-            sx={{
-                m: 2,
-                p: 3,
+        <CustomCard
+            styles={{
+                padding: "20px 30px",
             }}
         >
-            <Typography variant="h5">{props.productName}</Typography>
-            <Typography>Quantity-{props.quantity}</Typography>
-            <Typography>Current Location-{props.warehouse}</Typography>
-            <Typography>Price per Item-{amount / props.quantity}</Typography>
-            <TextField
-                label="Amount"
-                variant="outlined"
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
-            />
-            <Typography>Batch Id- {props.batchId}</Typography>
-            <Button onClick={() => placeBid()} variant="contained">
-                Place Bid for the Batch
-            </Button>
-        </Box>
+            <Box>
+                <Typography variant="h5">{props.productName}</Typography>
+            </Box>
+            <Divider style={{ margin: 10, marginBottom: 20 }} />
+            <Box
+                display="flex"
+                alignItems={"center"}
+                justifyContent="space-between"
+            >
+                <Box className="mr-10">
+                    <Typography>
+                        Quantity{" --- "}
+                        {props.quantity}
+                    </Typography>
+                    <Typography>
+                        Current Location{" --- "}
+                        {props.warehouse}
+                    </Typography>
+                    <Typography>
+                        Price per Item{" --- "}
+                        {amount / props.quantity}
+                    </Typography>
+                    <Typography>
+                        Batch Id{" --- "} {props.batchId}
+                    </Typography>
+                </Box>
+                <Box display={"flex"} flexDirection="column">
+                    <TextField
+                        label="Amount"
+                        variant="outlined"
+                        type="number"
+                        value={amount}
+                        onChange={(e) => setAmount(Number(e.target.value))}
+                        style={{ marginBottom: 20 }}
+                    />
+                    <Button onClick={() => placeBid()} variant="contained">
+                        Place Bid for the Batch
+                    </Button>
+                </Box>
+            </Box>
+        </CustomCard>
     );
 };
 

@@ -92,8 +92,8 @@ const ValidateToken = () => {
                     </Step>
                     <Step key={"Buyer"}>
                         <StepLabel>{"Buyer"}</StepLabel>
+                        <Typography>{data.buyerDT}</Typography>
                         <Typography>{sha256(data.batchId)}</Typography>
-                        <Typography>{data.logisticDT}</Typography>
                     </Step>
                 </Stepper>
             </Box>

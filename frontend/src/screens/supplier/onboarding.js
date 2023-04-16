@@ -1,4 +1,16 @@
-import { Box, Button, Typography } from "@mui/material";
+import {
+    Box,
+    Button,
+    Divider,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Typography,
+} from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Dropdown from "../../components/Dropdown";
@@ -10,14 +22,17 @@ import SuperButton from "../../components/SuperButton";
 import CustomButton from "../../components/CustomButton";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { aadharQrToJson } from "../../utils/aadharToQr";
 
 function Onboarding() {
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const changeLanguage = () => i18n.changeLanguage("en");
+
     useEffect(() => {
         i18n.changeLanguage("en");
     }, []);
+
     const sellingProducts = [
         "Wheat",
         "Sugarcane",
@@ -30,13 +45,13 @@ function Onboarding() {
     const [selectedSellingProduct, setSelectedSellingProduct] = useState(
         sellingProducts[0]
     );
-    const [image, setImage] = useState(null);
     const [sellingUnits, setSetSellingUnits] = useState(0);
-    const imageUploadRef = useRef();
 
-    useEffect(() => {
-        console.log(image);
-    }, [image]);
+    const uploadImageRef = useRef();
+
+    const [uploadImage, setUploadImage] = useState();
+
+    const [json, setJson] = useState({});
 
     const onSubmit = async () => {
         setLoading(true);
@@ -51,7 +66,13 @@ function Onboarding() {
         };
         await addDoc(collection(db, "suppliers"), data);
 
-        navigate("/supplier/selectManufacturer");
+        if (!uploadImage) return;
+
+        const res = await aadharQrToJson(uploadImage[0]);
+        console.log(res);
+        setJson(res.data);
+
+        // navigate("/supplier/selectManufacturer");
         setLoading(false);
     };
 
@@ -100,27 +121,38 @@ function Onboarding() {
                         flexDirection={"column"}
                         width={"80%"}
                     >
-                        {/* <input
-                        onChange={(e) => setImage(e.target.files)}
-                        ref={imageUploadRef}
-                        type="file"
-                        style={{ display: "none" }}
-                    /> */}
-                        {/* <Button
-          variant="contained"
-          size="large"
-          startIcon={<CloudUploadIcon />}
-          onClick={() => imageUploadRef.current.click()}
-          fullWidth
-        >
-          Upload Aadhar photo
-        </Button> */}
+                        <input
+                            required
+                            // @ts-ignore
+                            onChange={(e) => setUploadImage(e.target.files)}
+                            ref={uploadImageRef}
+                            type="file"
+                            style={{ display: "none" }}
+                        />
                         <SuperButton
                             icon={<CloudUploadIcon />}
-                            text={"Upload Aadhar Photo"}
-                            onClick={() => imageUploadRef.current.click()}
+                            text={"Upload Aadhar QR"}
+                            // @ts-expect-error
+                            onClick={() => uploadImageRef.current.click()}
                             styles={{ marginBottom: "1.5rem" }}
                         />
+                        <Paper
+                            sx={{
+                                height: 100,
+                                overflow: "scroll",
+                                p: 2,
+                                mb: 2,
+                            }}
+                        >
+                            <Typography>Aadhar Verified Data</Typography>
+                            <Divider />
+                            {Object.keys(json).map((val) => (
+                                <Typography>
+                                    {val} --- {json[val]}
+                                </Typography>
+                            ))}
+                        </Paper>
+
                         <Dropdown
                             label={"What do you sell?"}
                             setInputValue={setSelectedSellingProduct}
@@ -141,12 +173,16 @@ function Onboarding() {
             >
               Submit
             </Button> */}
+
                         <CustomButton
                             text={"Submit"}
                             onPress={() => {
                                 onSubmit();
                             }}
                             styles={{ margin: "2rem" }}
+                            btnProps={undefined}
+                            typographyVariant={undefined}
+                            icon={undefined}
                         />
                     </Box>
                 </Box>

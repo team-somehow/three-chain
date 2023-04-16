@@ -43,60 +43,69 @@ const SeeLoans = () => {
                             <CustomCard>
                                 <Box>
                                     <Typography variant="body1">
-                                        {t("Loan Id")}- {item.id}
+                                        {t("Loan Id")}- <b>{item.id}</b>
                                     </Typography>
                                     <Typography>
-                                        {t("Amount")}- {item.amount}
+                                        {t("Amount")}-<b>{item.amount}</b>
                                     </Typography>
                                     <Typography>
                                         {t("Payable Amount")}-{" "}
-                                        {item.totalAmount}
+                                        <b>{item.totalAmount}</b>
                                     </Typography>
                                     <Typography>
                                         {t("Manufacturer ID")}-{" "}
-                                        {item.manufacturerId}
+                                        <b>{item.manufacturerId}</b>
                                     </Typography>
-                                    <Button
-                                        variant="contained"
-                                        sx={{
-                                            borderRadius: "16px",
-                                        }}
-                                        color={
-                                            item.loanStatus === "Approved" ||
-                                            item.loanStatus === "Paid"
-                                                ? "success"
-                                                : "primary"
-                                        }
+                                    <Box
+                                        display={"flex"}
+                                        alignItems={"center"}
+                                        my={1}
                                     >
-                                        {item.loanStatus === "Paid" && (
-                                            <CheckIcon />
+                                        <Button
+                                            variant="contained"
+                                            sx={{
+                                                borderRadius: "16px",
+                                            }}
+                                            color={
+                                                item.loanStatus ===
+                                                    "Approved" ||
+                                                item.loanStatus === "Paid"
+                                                    ? "success"
+                                                    : "primary"
+                                            }
+                                        >
+                                            {item.loanStatus === "Paid" && (
+                                                <CheckIcon />
+                                            )}
+                                            {t(item.loanStatus)}
+                                        </Button>
+                                        {item.loanStatus === "Approved" && (
+                                            <Link
+                                                to={
+                                                    "/supplier/repay/" + item.id
+                                                }
+                                                style={{
+                                                    marginLeft: "10px",
+                                                }}
+                                            >
+                                                <CustomButton
+                                                    text={t("Repay Loan")}
+                                                    onPress={() => {}}
+                                                />
+                                            </Link>
                                         )}
-                                        {t(item.loanStatus)}
-                                    </Button>
-                                    {item.loanStatus === "Approved" && (
                                         <Link
-                                            to={"/supplier/repay/" + item.id}
+                                            to={"/chat/" + item.manufacturerId}
                                             style={{
-                                                marginLeft: "10px",
+                                                marginLeft: 10,
                                             }}
                                         >
                                             <CustomButton
-                                                text={t("Repay Loan")}
+                                                text={"Chat"}
                                                 onPress={() => {}}
                                             />
                                         </Link>
-                                    )}
-                                    <Link
-                                        to={"/chat/" + item.manufacturerId}
-                                        style={{
-                                            marginLeft: 10,
-                                        }}
-                                    >
-                                        <CustomButton
-                                            text={"Chat"}
-                                            onPress={() => {}}
-                                        />
-                                    </Link>
+                                    </Box>
                                 </Box>
                             </CustomCard>
                         </Box>

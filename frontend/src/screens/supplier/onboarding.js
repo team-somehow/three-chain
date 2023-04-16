@@ -9,6 +9,7 @@ import {
     TableContainer,
     TableHead,
     TableRow,
+    TextField,
     Typography,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
@@ -85,7 +86,7 @@ function Onboarding() {
     return (
         <>
             <h1 className="text-center text-4xl pt-6 font-black text-white">
-                Lets Onboard you!
+                Let's Onboard you!
             </h1>
             <Box
                 width={"100%"}
@@ -159,13 +160,16 @@ function Onboarding() {
                             ))}
                         </Paper>
 
-                        <Dropdown
+                        <TextField
                             label={"What do you sell?"}
-                            setInputValue={setSelectedSellingProduct}
-                            inputValue={selectedSellingProduct}
-                            options={sellingProducts}
+                            onChange={(e) =>
+                                setSelectedSellingProduct(e.target.value)
+                            }
+                            value={selectedSellingProduct}
+                            // options={sellingProducts}
                         />
                         <WeightInput
+                            placeholder="Capacity"
                             inputValue={sellingUnits}
                             setInputValue={setSetSellingUnits}
                             styles={{ marginTop: "2rem" }}

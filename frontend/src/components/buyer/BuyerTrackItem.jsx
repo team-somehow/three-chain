@@ -9,6 +9,8 @@ import { arcanaProvider } from "../..";
 import { ProductNFTContractAddress } from "../../constants/constants";
 import { useAuth } from "@arcana/auth-react";
 import { useNavigate } from "react-router";
+import CustomCard from "../CustomCard";
+import CustomButton from "../CustomButton";
 
 const BuyerTrackItem = (props) => {
     const provider = new providers.Web3Provider(arcanaProvider.provider);
@@ -68,42 +70,72 @@ const BuyerTrackItem = (props) => {
 
     if (props.itemReached && props.itemInTransit) {
         return (
-            <Box component={Paper}>
-                <Typography>{props.productName}</Typography>
-                <Typography>Drop waiting for confirmation</Typography>
-            </Box>
-        );
-    }
-
-    if (props.itemReached) {
-        return (
-            <Box component={Paper}>
-                <Typography>{props.productName}</Typography>
-                <Typography>Item successfully reached</Typography>
-            </Box>
-        );
-    }
-    if (props.itemInTransit) {
-        return (
-            <Box
-                component={Paper}
-                sx={{
+            <CustomCard
+                styles={{
+                    margin: "20px 0",
+                    width: "100%",
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                 }}
             >
-                <Typography>{props.productName}</Typography>
-                <Typography>item in transit</Typography>
-                <Button variant="contained" onClick={() => itemReached()}>
-                    Item reached
-                </Button>
-            </Box>
+                <Box>
+                    <Typography variant="h4">
+                        Name- {props.productName}
+                    </Typography>
+                    <Typography>
+                        Current status- Waiting for confirmation
+                    </Typography>
+                </Box>
+            </CustomCard>
         );
     }
 
-    if (!props.buyer && !props.logistic) {
-        return <Box></Box>;
+    if (props.itemReached) {
+        return (
+            <CustomCard
+                styles={{
+                    margin: "20px 0",
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                }}
+            >
+                <Box>
+                    <Typography variant="h4">
+                        Name- {props.productName}
+                    </Typography>
+                    <Typography>
+                        Current status- Item successfully reached
+                    </Typography>
+                </Box>
+            </CustomCard>
+        );
+    }
+    if (props.itemInTransit) {
+        return (
+            <CustomCard
+                styles={{
+                    margin: "20px 0",
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                }}
+            >
+                <Box>
+                    <Typography variant="h4">
+                        Name- {props.productName}
+                    </Typography>
+                    <Typography>Current status- item in transit</Typography>
+                </Box>
+                <CustomButton
+                    text={"Item reached"}
+                    onPress={() => itemReached()}
+                ></CustomButton>
+            </CustomCard>
+        );
     }
 
     return (

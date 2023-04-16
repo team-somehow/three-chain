@@ -74,6 +74,7 @@ const ManufacturerBidItem = (props) => {
             products: newData,
         });
         // console.log(newData);
+        navigate(0);
     };
 
     return (
@@ -130,7 +131,9 @@ const ManufacturerBidItem = (props) => {
                                     {() => chooseBid(index)} */}
                                 <CustomButton
                                     text={"Choose Bid"}
-                                    onPress={() => {}}
+                                    onPress={() => {
+                                        chooseBid(index);
+                                    }}
                                 />
                             </ListItem>
                         );

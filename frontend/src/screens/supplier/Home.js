@@ -4,10 +4,12 @@ import CustomButton from "../../components/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../../components/Dropdown";
+import LanguageDropdown from "../../components/languageDropdown";
 
 function Home() {
     const navigate = useNavigate();
     const [selectedLang, setSelectedLang] = useState("English");
+    const [isActive, setIsActive] = useState(false);
     const { t, i18n } = useTranslation();
     // const changeLang = () => {
     //     console.log(selectedLang);
@@ -19,7 +21,18 @@ function Home() {
 
     return (
         <Box sx={{ m: 2 }}>
-            <Typography variant="h4">{t("Home")}</Typography>
+            <Box
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                width="100%"
+            >
+                <Typography variant="h4">{t("Home")}</Typography>
+                <LanguageDropdown
+                    isActive={isActive}
+                    setIsActive={setIsActive}
+                />
+            </Box>
             <Box width={"100%"}>
                 <CustomButton
                     text={t("Select Manufacturer")}
@@ -39,12 +52,12 @@ function Home() {
                         padding: "8px",
                     }}
                 />
-                <Dropdown
+                {/* <Dropdown
                     label={t("Select Langauge")}
                     options={["English", t("Hindi")]}
                     inputValue={selectedLang}
                     setInputValue={setSelectedLang}
-                />
+                /> */}
             </Box>
         </Box>
     );

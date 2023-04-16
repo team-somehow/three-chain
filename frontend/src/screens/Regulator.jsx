@@ -48,7 +48,7 @@ function Regulator() {
             <Typography
                 variant="h3"
                 component="h3"
-                style={{ margin: "1rem 0" , color : 'white'}}
+                style={{ margin: "1rem 0" }}
             >
                 Batches to be approved
             </Typography>

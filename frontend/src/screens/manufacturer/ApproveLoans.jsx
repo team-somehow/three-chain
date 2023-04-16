@@ -6,6 +6,7 @@ import { useAuth } from "@arcana/auth-react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
 
 const suppliers = [
     {
@@ -60,23 +61,28 @@ function ApproveLoans() {
     }, [auth]);
 
     return (
-        <div
-            style={{
-                paddingLeft: 20,
+        <Box
+            sx={{
+                p: 5,
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                alignSelf: "center",
+                flexDirection: "column",
             }}
         >
             <Typography
                 variant="h4"
-                component="h4"
-                style={{ margin: "1rem 0" }}
-                fontWeight="600"
+                // component="h4"
+                // style={{ margin: "1rem 0" }}
+                // fontWeight="600"
             >
                 Approve Loans
             </Typography>
             {data.map((e) => {
                 return <MyCard {...e} />;
             })}
-        </div>
+        </Box>
     );
 }
 

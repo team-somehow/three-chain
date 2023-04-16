@@ -52,9 +52,12 @@ function Login() {
                 alignItems={"center"}
                 justifyContent={"space-between"}
             >
-                <Typography variant="h4" align="center">
-                    {"Three Chain"}
-                </Typography>
+                <Box display={"flex"} alignItems={"center"}>
+                    <img src="./logo192.png" width={"50px"} />
+                    <Typography ml={2} variant="h4" align="center">
+                        {"Three Chain"}
+                    </Typography>
+                </Box>
                 <Box display={"flex"} alignItems={"center"}>
                     <Link
                         to="/chatbot"

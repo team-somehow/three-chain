@@ -44,8 +44,17 @@ const BuyerBid = () => {
     return (
         <Box display={"flex"}>
             <BuyerDashboardNavbar />
-            <Box m={2}>
-                <Typography variant="h3" align="center">
+            <Box
+                sx={{
+                    p: 5,
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    alignSelf: "center",
+                    flexDirection: "column",
+                }}
+            >
+                <Typography variant="h4" align="center">
                     Bid for Items
                 </Typography>
                 {data.map((item) => {

@@ -40,6 +40,10 @@ const BuyerTrack = () => {
                 sx={{
                     p: 5,
                     width: "100%",
+                    display: "flex",
+                alignItems: "center",
+                alignSelf: "center",
+                flexDirection: "column",
                 }}
             >
                 <Typography variant="h4">Track Batches</Typography>

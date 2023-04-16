@@ -88,7 +88,7 @@ const BuyerBiddingItem = (props) => {
     return (
         <CustomCard
             styles={{
-                padding: "20px 30px",
+                margin: "20px 0",
             }}
         >
             <Box>

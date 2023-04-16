@@ -21,7 +21,7 @@ const LogisticsNavbar = (props) => {
     return (
         <Drawer
             sx={{
-                width: 350,
+                width: 280,
                 flexShrink: 0,
                 "& .MuiDrawer-paper": {
                     width: 280,

@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Map, Marker } from "react-map-gl";
+import CurvedLine from "../../components/utils/MapLine";
+import { multiLineString } from "@turf/turf";
 
 function HomeLog() {
+    const coordinates = [];
+
+    coordinates.push([
+        [75.2227995, 19.8702388],
+        [76.7575381, 17.3391522],
+    ]);
+    coordinates.push([
+        [72.898441, 19.100343],
+        [76.7575381, 17.3391522],
+    ]);
+    const [features, setFeatures] = useState(multiLineString(coordinates));
+
+    useEffect(() => {
+        // setFeatures();
+    }, []);
+
     return (
         <div>
             <Map
@@ -14,6 +32,12 @@ function HomeLog() {
                 renderWorldCopies={false}
                 onClick={() => {}}
             >
+                <CurvedLine
+                    data={features}
+                    curveStyles={curveStyles}
+                    id={"3112"}
+                />
+
                 {/* pin */}
                 <Marker
                     latitude={19.100343}
@@ -30,27 +54,13 @@ function HomeLog() {
 
                 {/* pin */}
                 <Marker
-                    latitude={15.3173}
-                    longitude={75.7139}
-                    style={markerStyle}
-                    onClick={() => {}}
-                >
-                    <img
-                        src={process.env.PUBLIC_URL + "/map/pin2.png"}
-                        width={30}
-                        alt="da"
-                    />
-                </Marker>
-
-                {/* pin */}
-                <Marker
                     latitude={19.8702388}
                     longitude={75.2227995}
                     style={markerStyle}
                     onClick={() => {}}
                 >
                     <img
-                        src={process.env.PUBLIC_URL + "/map/pin2.png"}
+                        src={process.env.PUBLIC_URL + "/map/pin1.png"}
                         width={30}
                         alt="da"
                     />
@@ -64,7 +74,7 @@ function HomeLog() {
                     onClick={() => {}}
                 >
                     <img
-                        src={process.env.PUBLIC_URL + "/map/pin3.png"}
+                        src={process.env.PUBLIC_URL + "/map/pin1.png"}
                         width={30}
                         alt="da"
                     />
@@ -102,6 +112,12 @@ export const mapContainerStyles = {
 
 const markerStyle = {
     cursor: "pointer",
+};
+
+// styles for curved line
+export const curveStyles = {
+    "line-width": 2,
+    "line-color": "#000000",
 };
 
 export default HomeLog;

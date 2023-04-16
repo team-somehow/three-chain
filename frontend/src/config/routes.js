@@ -8,6 +8,7 @@ import SupplierLogin from "../screens/supplier/SupplierLogin";
 import SelectManufacturer from "../screens/supplier/selectManufacturer";
 import GetLoan from "../screens/supplier/getLoan";
 import Loan from "../screens/supplier/loan";
+import SelectSupplier from '../screens/manufacturer/SelectSupplier';
 
 // import Home from "../screens/Home";
 // import Login from "../screens/Login";
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
     path: "/supplier",
     children: [
       {
-        path: "/supplier/login",
+        path: '/supplier/login',
         element: <SupplierLogin />,
       },
       {
-        path: "/supplier/login",
+        path: '/supplier/login',
         element: <SupplierLogin />,
       },
       {
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
             element: <h1>Approve Loan</h1>,
           },
           {
-            path: "selectSupplier",
+            path: 'selectSupplier',
             element: <h1>Supplier Select</h1>,
           },
           {

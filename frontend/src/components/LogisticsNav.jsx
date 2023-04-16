@@ -11,6 +11,8 @@ import HandshakeIcon from "@mui/icons-material/Handshake";
 import ChatIcon from "@mui/icons-material/Chat";
 import AddIcon from "@mui/icons-material/Add";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Divider, Typography } from "@mui/material";
 
 const LogisticsNavbar = (props) => {
@@ -19,7 +21,7 @@ const LogisticsNavbar = (props) => {
     return (
         <Drawer
             sx={{
-                width: 350,
+                width: 280,
                 flexShrink: 0,
                 "& .MuiDrawer-paper": {
                     width: 280,
@@ -66,6 +68,12 @@ const LogisticsNavbar = (props) => {
                         </ListItem>
                     </div>
 
+                    <NavLink
+                        text={"Visualize"}
+                        icon={<RemoveRedEyeIcon />}
+                        onClickNavigateTo="/logistics"
+                        isActive={currentRoute === "/logistics"}
+                    />
                     <NavLink
                         text={"Get Details"}
                         icon={<HandshakeIcon />}

@@ -79,9 +79,16 @@ function ApproveLoans() {
             >
                 Approve Loans
             </Typography>
-            {data.map((e) => {
-                return <MyCard {...e} />;
-            })}
+            <Box
+                sx={{
+                    m: 4,
+                    width:"100%"
+                }}
+            >
+                {data.map((e) => {
+                    return <MyCard {...e} />;
+                })}
+            </Box>
         </Box>
     );
 }

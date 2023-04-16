@@ -64,7 +64,7 @@ function MyCard(props) {
                 marginBottom: "20px",
             }}
         >
-            <Box sx={{ width: 600 }}>
+            <Box>
                 <Box
                     display={"flex"}
                     justifyContent={"space-between"}

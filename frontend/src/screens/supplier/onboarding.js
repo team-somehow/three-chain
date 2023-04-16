@@ -53,6 +53,10 @@ function Onboarding() {
 
     const [json, setJson] = useState({});
 
+    useEffect(() => {
+        verifyAadhar();
+    }, [uploadImage]);
+
     const onSubmit = async () => {
         setLoading(true);
         const data = {
@@ -66,14 +70,16 @@ function Onboarding() {
         };
         await addDoc(collection(db, "suppliers"), data);
 
+        navigate("/supplier/selectManufacturer");
+        setLoading(false);
+    };
+
+    const verifyAadhar = async () => {
         if (!uploadImage) return;
 
         const res = await aadharQrToJson(uploadImage[0]);
         console.log(res);
         setJson(res.data);
-
-        // navigate("/supplier/selectManufacturer");
-        setLoading(false);
     };
 
     return (
@@ -104,7 +110,7 @@ function Onboarding() {
                         flexDirection: "column",
                         alignItems: "center",
                         width: "100%",
-                        height: "70vh",
+                        // height: "70vh",
                     }}
                 >
                     <Typography
@@ -180,7 +186,9 @@ function Onboarding() {
                                 onSubmit();
                             }}
                             styles={{ margin: "2rem" }}
-                            btnProps={undefined}
+                            btnProps={{
+                                disabled: Object.keys(json).length === 0,
+                            }}
                             typographyVariant={undefined}
                             icon={undefined}
                         />

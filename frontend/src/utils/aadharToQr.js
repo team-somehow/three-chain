@@ -2,7 +2,7 @@ import axios from "axios";
 import FormData from "form-data";
 
 export const aadharQrToJson = async (image) => {
-    const url = `http://127.0.0.1:5001`;
+    const url = `https://61f2-182-76-21-121.ngrok-free.app`;
 
     //we gather a local file for this example, but any valid readStream source will work here.
     let data = new FormData();

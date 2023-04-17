@@ -4,27 +4,42 @@
 @tailwind utilities;
 
 body {
-  background: url("./../public/Gradient-bg.png") no-repeat center
-    center/cover !important;
-  color: #1f4e5f !important;
-  overflow: auto;
-  overflow-x: hidden;
-  min-height: 100vh;
-  background-attachment: fixed !important;
+    background: url("./../public/Gradient-bg.png") no-repeat center center/cover !important;
+    color: #1f4e5f !important;
+    overflow: auto;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-attachment: fixed !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapboxgl-popup-tip,
+.mapboxgl-popup-close-button {
+    display: none;
+}
+
+.mapboxgl-popup-content {
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.mapboxgl-popup-content {
+    /* background-color: rgba(14, 55, 146, 0.8) !important; */
+    backdrop-filter: saturate(180%) blur(10px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
 }
